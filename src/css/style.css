@@ -29,6 +29,20 @@ button{
 .btn-primary:hover{
   background-color: var(--special);
 }
+.btn-secundary{
+  background-color: var(--secundary);
+  transition: 0.5s;
+}
+.btn-secundary:hover{
+  background-color: var(--special);
+}
+.btn-special{
+  background-color: var(--special);
+  transition: 0.5s;
+}
+.btn-primary:hover{
+  background-color: var(--primary);
+}
 nav{
   position: sticky;
   display: flex;
@@ -76,7 +90,8 @@ section.reason-sales > div {
   gap:2.5rem;
 }
 .pricing > div{
-  padding: 20px 10px;
+  position: relative;
+  padding: 20px 10px 50px;
   border: 1.5px solid black;
   border-radius: 12px;
 }
@@ -89,6 +104,12 @@ div.professional{
 }
 div.premium{
   border-color: var(--special);
+}
+.pricing div > button{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .contact h4{
   margin: 0;
