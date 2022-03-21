@@ -1,0 +1,18 @@
+{
+  "name": "oxygen-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TKadyear/oxygen-shop.git"
+  },
+  "keywords": [],
+  "author": "Tamara Kadyear Saber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TKadyear/oxygen-shop/issues"
+  },
+  "homepage": "https://github.com/TKadyear/oxygen-shop#readme"
+}
