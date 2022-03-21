@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap');
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');:root{
   --primary: #08A6E4;
   --secundary: #FB3B64;
   --special: #55DFB4;
@@ -9,6 +8,7 @@
   --grey: #95989a;
 
 }
+/* IMPROVE Revisar los gap hay algunos en px y otros en rem */
 body{
   margin: 0;
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
@@ -68,6 +68,35 @@ section.reason-sales > div {
 .trumpet{
   background-color: var(--special);
   height: min-content;
+}
+.contact h4{
+  margin: 0;
+  font-weight: 400;
+  font-size: 40px;
+}
+.contact p{
+  margin: 0;
+}
+.contact{
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+.mail-phone{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem ;
+}
+.mail-phone > p{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--grey);
 }
 form{
   width: 85%;
