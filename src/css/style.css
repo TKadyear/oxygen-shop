@@ -225,6 +225,17 @@ footer{
   flex-direction: row;
   gap:1rem;
 }
-@media only screen and (min-width: 1000px) {
-
+@media only screen and (min-width: 768px) {
+  .mail-phone{
+    flex-direction: row;
+  }
+  .section-contact{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  form{
+    margin: 0;
+  }
 }
