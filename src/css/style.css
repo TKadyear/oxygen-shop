@@ -69,6 +69,27 @@ section.reason-sales > div {
   background-color: var(--special);
   height: min-content;
 }
+.pricing{
+  padding: 53px 18px;
+  display: flex;
+  flex-direction: column;
+  gap:2.5rem;
+}
+.pricing > div{
+  padding: 20px 10px;
+  border: 1.5px solid black;
+  border-radius: 12px;
+}
+div.basic{
+  border-color: var(--secundary);
+}
+div.professional{
+  border-color: var(--primary);
+  box-shadow: 5px 10px 27px var(--shadow-primary);
+}
+div.premium{
+  border-color: var(--special);
+}
 .contact h4{
   margin: 0;
   font-weight: 400;
