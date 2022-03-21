@@ -79,12 +79,13 @@
       <div class="professional">Professional</div>
       <div class="premium">Premium</div>
     </section>
-    <form>
-      <!-- IMPROVE Quizás hay que hacer esto con legend y form, hay que repasarlo -->
+    <div class="contact">
       <h4>Any Questions?</h4>
       <p>Leave your email address or call us!</p>
       <div class="mail"><img src="./assets/img/icons/mail.svg" alt="">info@bestshop.xyz</div>
       <div class="phone"><img src="./assets/img/icons/phone.svg" alt="">123 456 789</div>
+    </div>
+    <form>
       <label>
         Name
         <input type="text" name="name-person" minlength="2" maxlength="100" required>
@@ -93,14 +94,16 @@
         Email
         <input type="email" name="email" required>
       </label>
-      <input type="checkbox" name="data-protection" required>
       <label id="data-protection" for="data-protection">
-        I hereby give consent for my personal data included in my application to be processed for the purposes of the
-        recruitment process under the European Parliament’s and Council of the European Union Regulation on the
-        Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
-        free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
+        <input type="checkbox" name="data-protection" required>
+        <p> I hereby give consent for my personal data included in my application to be processed for the purposes of
+          the
+          recruitment process under the European Parliament’s and Council of the European Union Regulation on the
+          Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
+          free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
+        </p>
       </label>
-      <button class="btn-primary">Send </button>
+      <button class="btn-primary">Send</button>
     </form>
   </main>
   <footer>
