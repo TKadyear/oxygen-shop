@@ -107,7 +107,7 @@ div.premium{
 }
 .pricing div > button{
   position: absolute;
-  top: 60%;
+  top: 75%;
   left: 50%;
   transform: translateX(-50%);
 }
