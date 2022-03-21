@@ -80,6 +80,7 @@
       <div class="premium">Premium</div>
     </section>
     <form>
+      <!-- IMPROVE Quizás hay que hacer esto con legend y form, hay que repasarlo -->
       <h4>Any Questions?</h4>
       <p>Leave your email address or call us!</p>
       <div class="mail"><img src="./assets/img/icons/mail.svg" alt="">info@bestshop.xyz</div>
@@ -92,8 +93,8 @@
         Email
         <input type="email" name="email" required>
       </label>
-      <label>
-        <input type="checkbox" name="data-protection" required>
+      <input type="checkbox" name="data-protection" required>
+      <label id="data-protection" for="data-protection">
         I hereby give consent for my personal data included in my application to be processed for the purposes of the
         recruitment process under the European Parliament’s and Council of the European Union Regulation on the
         Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the

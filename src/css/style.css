@@ -6,6 +6,7 @@
   --shadow-primary: #07ace64a;
   --shadow-grey: #0000004a;
   --white: #FFFFFF;
+  --grey: #95989a;
 
 }
 body{
@@ -64,9 +65,40 @@ section.reason-sales > div {
   background-color: var(--special);
   height: min-content;
 }
+form{
+  width: 90%;
+  margin:0 auto;
+}
+form > button{
+  width: 60%;
+}
 label{
   display: flex;
   flex-direction: column;
+}
+input[type=checkbox]{
+  display: inline-block;
+  appearance: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border:1px solid var(--grey);
+  border-radius: 4px;
+  flex-grow: 2;
+}
+input[type=checkbox]:checked::after{
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 12px;
+  top: 6px;
+  left: 5px;
+  background: url(../assets/img/icons/checkmark.svg) no-repeat;
+  background-size: contain;
+}
+#data-protection{
+  width: calc(100% - 24px);
+  color: var(--grey);
 }
 footer{
   background-color: var(--white);
