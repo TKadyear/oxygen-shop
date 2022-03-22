@@ -96,19 +96,48 @@ section.reason-sales > div {
   border: 1.5px solid black;
   border-radius: 12px;
 }
-div.basic{
+.pricing p {
+  font-weight: bold;
+  font-size: 20px;
+}
+.pricing .basic{
   border-color: var(--secundary);
 }
-div.professional{
+.pricing .professional{
   border-color: var(--primary);
   box-shadow: 5px 10px 27px var(--shadow-primary);
 }
-div.premium{
+.pricing .premium{
   border-color: var(--special);
+}
+.pricing strong{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 46px;
+  font-weight: 300;
+}
+.basic strong{
+  color:var(--secundary);
+}
+.professional strong{
+  color:var(--primary);
+}
+.premium strong{
+  color:var(--special);
+}
+p.offer::after{
+  content:"Limited offer";
+  font-size: 12px;
+}
+.pricing ul {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  list-style-image: url(../assets/img/icons/Checkbox.svg);
+}
+li.disadvantages{
+  list-style-image: url(../assets/img/icons/Cross.svg);
 }
 .pricing div > button{
   position: absolute;
-  top: 75%;
+  bottom: -1.5rem;
   left: 50%;
   transform: translateX(-50%);
 }
