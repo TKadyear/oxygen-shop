@@ -46,6 +46,7 @@ button{
 }
 nav{
   position: sticky;
+  padding: 17px 25px;
   display: flex;
   top:0;
   background-color: var(--white);
