@@ -6,6 +6,7 @@
   --shadow-grey: #0000004a;
   --white: #FFFFFF;
   --grey: #95989a;
+  --border-grey:#E8E9ED;
 
 }
 /* IMPROVE Revisar los gap hay algunos en px y otros en rem */
@@ -67,22 +68,31 @@ nav{
 header >img{
   width: 100%;
 }
-.reason-sales{
-  background-color: #E5E5E5;
+.reasons-sales{
+  background-color: #F7F7F7;
   height: max-content;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  padding: 42px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
 }
-section.reason-sales > div {
-  width: 90%;
+.reasons-sales > div {
   background-color: var(--white);
-  border-radius: 12px;
-
+  box-sizing: border-box;
+  padding: 21px;
+  border:1px solid var(--border-grey);
+  border-radius: 5px;
 }
-.trumpet{
+.reasons-sales h3{
+  font-weight: 400;
+  font-size: 30px;
+}
+#trumpet{
   background-color: var(--special);
-  height: min-content;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius:0 0 5px 5px;
 }
 .pricing{
   padding: 53px 18px;
