@@ -68,6 +68,21 @@ nav{
 header >img{
   width: 100%;
 }
+.info-header button{
+  width: 330px;
+}
+.sales-info{
+
+}
+.sales-info h2{
+  text-align: center;
+  font-size: 30px;
+  font-weight:300;
+}
+.sales-info > div{
+  /* display: flex; */
+  /* flex-direction: column; */
+}
 .reasons-sales{
   background-color: #F7F7F7;
   height: max-content;
