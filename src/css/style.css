@@ -62,7 +62,18 @@ nav{
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
   font-size: 26px;
-
+}
+nav ul{
+  list-style-type: none;
+  padding:0;
+}
+nav a {
+  color:  #A5A5A5;
+  letter-spacing: 3.28px;
+  font-size: 11px;
+  text-decoration:none ;
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .menu{
   display: none;
