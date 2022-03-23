@@ -2,7 +2,9 @@
   --primary: #08A6E4;
   --secundary: #FB3B64;
   --special: #55DFB4;
-  --shadow-primary: #07ace64a;
+  --shadow-primary: #08a8e34a;
+  --shadow-secundary: #fb3c654a;
+  --shadow-special: #54deb24a;
   --shadow-grey: #0000004a;
   --white: #FFFFFF;
   --grey: #95989a;
@@ -140,6 +142,7 @@ h1{
   width: calc(100% - 15%);
   justify-content: space-between;
   align-items: center;
+  transition: 0.4s;
 }
 .pricing p {
   width: 40%;
@@ -158,7 +161,15 @@ h1{
   gap:0.5rem;
   justify-content: space-evenly;
   border-color: var(--primary);
+}
+.pricing .basic:hover{
+  box-shadow: 5px 10px 27px var(--shadow-secundary);
+}
+.pricing .professional:hover{
   box-shadow: 5px 10px 27px var(--shadow-primary);
+}
+.pricing .premium:hover{
+  box-shadow: 5px 10px 27px var(--shadow-special);
 }
 .pricing .premium{
   border-color: var(--special);
