@@ -13,6 +13,7 @@
 }
 /* IMPROVE Revisar los gap hay algunos en px y otros en rem */
 body{
+  box-sizing: border-box;
   margin: 0;
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
   font-family: 'Raleway', sans-serif;
@@ -144,12 +145,15 @@ h1{
   border-radius: 18px;
   display: flex;
   flex-direction: row;
-  width: calc(100% - 15%);
+  /* TODO Corregir tamaños */
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   transition: 0.4s;
 }
 .pricing p {
+  /* IMPROVE Hay que mirar alguna manera de poder igualar bien los tamaños de los textos  */
+  height: 105px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -162,18 +166,18 @@ h1{
 }
 
 .pricing .professional{
-  width: 95%;
-  gap:0.5rem;
-  justify-content: space-evenly;
   border-color: var(--primary);
 }
 .pricing .basic:hover{
+  transform: scale(1.05);
   box-shadow: 5px 10px 27px var(--shadow-secundary);
 }
 .pricing .professional:hover{
+  transform: scale(1.05);
   box-shadow: 5px 10px 27px var(--shadow-primary);
 }
 .pricing .premium:hover{
+  transform: scale(1.05);
   box-shadow: 5px 10px 27px var(--shadow-special);
 }
 .pricing .premium{
