@@ -127,7 +127,7 @@ h1{
   text-align: center;
 }
 .pricing{
-  padding: 53px 18px
+  padding: 3.5rem 1.125rem;
 }
 .pricing__container{
   margin:0 auto;
@@ -336,9 +336,16 @@ footer{
   gap:1rem;
 }
 @media only screen and (min-width: 768px) {
+  .pricing{
+    padding-bottom: 5rem ;
+  }
   .pricing__container{
-    /* flex-direction: row; */
-    /* flex-wrap: wrap; */
+    max-width: none;
+    flex-direction: row;
+  }
+  .pricing__container > div{
+    max-width: 372px;
+    flex-direction: column;
   }
   .mail-phone{
     flex-direction: row;
@@ -348,8 +355,15 @@ footer{
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   form{
     margin: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .pricing__container{
+    flex-wrap:nowrap;
+    justify-content: center;
   }
 }
