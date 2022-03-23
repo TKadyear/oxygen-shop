@@ -47,13 +47,22 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
+#bg{
+  max-width: 320px;
+}
 nav{
   position: sticky;
-  display: flex;
+  padding: 17px 25px;
   top:0;
-  background-color: var(--white);
   z-index: 1;
+  background-color: var(--white);
   box-shadow: 0 3px 6px var(--shadow-grey);
+}
+.nav__container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .logo{
   margin: 0;
@@ -61,8 +70,44 @@ nav{
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
   font-size: 26px;
-
 }
+nav ul{
+  list-style-type: none;
+  padding:0;
+}
+nav a {
+  color:  #A5A5A5;
+  letter-spacing: 3.28px;
+  font-size: 11px;
+  text-decoration:none ;
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu{
+  display: none;
+}
+#hamburger{
+  width: 20px;
+  height: 12px;
+  background:url(../assets/img/icons/menu.svg) no-repeat;
+  border: 0px;
+  border-radius: 0;
+}
+#hamburger:checked~.menu{
+  display: block;
+  background: white;
+  width: 100vw;
+}
+#hamburger:checked{
+  width:14px;
+  height: 14px;
+  background-image :url(../assets/img/icons/cross-menu.svg);
+}
+/* BUG Hay que quitar el estilo general que se le da al input para evitar tener que hacer esto */
+#hamburger:checked::after{
+  background:none;
+}
+/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
   display: flex;
   flex-direction: column;
@@ -84,7 +129,6 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 4rem;
 }
 header >img{
   width: 100%;
@@ -340,6 +384,21 @@ footer{
   gap:1rem;
 }
 @media only screen and (min-width: 768px) {
+  header{
+    height:max-content;
+  }
+  /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
+  #hamburger{
+    display: none;
+  }
+  .menu{
+    display: block;
+  }
+  .menu ul {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+  }
   .pricing{
     padding-bottom: 5rem ;
   }
@@ -366,6 +425,13 @@ footer{
   }
 }
 @media only screen and (min-width: 1024px) {
+  .nav__container{
+    width:90%;
+    margin:0 auto;
+  }
+  .menu{
+    display:flex;
+  }
   .pricing__container{
     flex-wrap:nowrap;
     justify-content: center;

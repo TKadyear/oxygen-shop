@@ -13,8 +13,18 @@
 <body>
   <!-- TODO Poner el alt a todas las imágenes y un ancho fijo -->
   <nav>
-    <p class="logo">OXYGENShop</p>
-    <div class="menu"></div>
+    <div class="nav__container">
+      <p class="logo">OXYGENShop</p>
+      <input type="checkbox" id="hamburger">
+      <div class="menu">
+        <ul>
+          <li><a href="#">Why us</a></li>
+          <li><a href="#">Benefits</a></li>
+          <li><a href="#Pricing">Prices</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
   <header>
     <div class="info-header">
@@ -22,7 +32,7 @@
       <p>Open shop on our platform and Increase your sales</p>
       <button class="btn-primary">Open your shop</button>
     </div>
-    <img src="./assets/img/background-header.png" alt="">
+    <img id="bg" src="./assets/img/background-header.png" alt="">
   </header>
   <main>
     <section class="sales-info">
