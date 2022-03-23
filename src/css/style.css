@@ -2,7 +2,9 @@
   --primary: #08A6E4;
   --secundary: #FB3B64;
   --special: #55DFB4;
-  --shadow-primary: #07ace64a;
+  --shadow-primary: #08a8e34a;
+  --shadow-secundary: #fb3c654a;
+  --shadow-special: #54deb24a;
   --shadow-grey: #0000004a;
   --white: #FFFFFF;
   --grey: #95989a;
@@ -11,6 +13,7 @@
 }
 /* IMPROVE Revisar los gap hay algunos en px y otros en rem */
 body{
+  box-sizing: border-box;
   margin: 0;
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
   font-family: 'Raleway', sans-serif;
@@ -44,13 +47,22 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
+#bg{
+  max-width: 320px;
+}
 nav{
   position: sticky;
-  display: flex;
+  padding: 17px 25px;
   top:0;
-  background-color: var(--white);
   z-index: 1;
+  background-color: var(--white);
   box-shadow: 0 3px 6px var(--shadow-grey);
+}
+.nav__container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .logo{
   margin: 0;
@@ -58,8 +70,44 @@ nav{
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
   font-size: 26px;
-
 }
+nav ul{
+  list-style-type: none;
+  padding:0;
+}
+nav a {
+  color:  #A5A5A5;
+  letter-spacing: 3.28px;
+  font-size: 11px;
+  text-decoration:none ;
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu{
+  display: none;
+}
+#hamburger{
+  width: 20px;
+  height: 12px;
+  background:url(../assets/img/icons/menu.svg) no-repeat;
+  border: 0px;
+  border-radius: 0;
+}
+#hamburger:checked~.menu{
+  display: block;
+  background: white;
+  width: 100vw;
+}
+#hamburger:checked{
+  width:14px;
+  height: 14px;
+  background-image :url(../assets/img/icons/cross-menu.svg);
+}
+/* BUG Hay que quitar el estilo general que se le da al input para evitar tener que hacer esto */
+#hamburger:checked::after{
+  background:none;
+}
+/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
   display: flex;
   flex-direction: column;
@@ -81,7 +129,6 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 4rem;
 }
 header >img{
   width: 100%;
@@ -118,30 +165,39 @@ h1{
   padding: 15px;
   border-radius:0 0 5px 5px;
 }
+.pricing h4 {
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+}
 .pricing{
-  padding: 53px 18px;
+  padding: 3.5rem 1.125rem;
+}
+.pricing__container{
+  margin:0 auto;
+  max-width: 422px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap:2.5rem;
 }
-.pricing h4 {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 400;
-}
-.pricing > div{
+.pricing__container > div{
   position: relative;
   padding: 20px 10px 50px;
   border: 1.5px solid black;
   border-radius: 18px;
   display: flex;
   flex-direction: row;
-  width: calc(100% - 15%);
+  /* TODO Corregir tamaños */
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+  transition: 0.4s;
 }
 .pricing p {
+  /* IMPROVE Hay que mirar alguna manera de poder igualar bien los tamaños de los textos  */
+  height: 105px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -154,11 +210,19 @@ h1{
 }
 
 .pricing .professional{
-  width: 95%;
-  gap:0.5rem;
-  justify-content: space-evenly;
   border-color: var(--primary);
+}
+.pricing .basic:hover{
+  transform: scale(1.05);
+  box-shadow: 5px 10px 27px var(--shadow-secundary);
+}
+.pricing .professional:hover{
+  transform: scale(1.05);
   box-shadow: 5px 10px 27px var(--shadow-primary);
+}
+.pricing .premium:hover{
+  transform: scale(1.05);
+  box-shadow: 5px 10px 27px var(--shadow-special);
 }
 .pricing .premium{
   border-color: var(--special);
@@ -321,6 +385,32 @@ footer{
   gap:1rem;
 }
 @media only screen and (min-width: 768px) {
+  header{
+    height:max-content;
+  }
+  /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
+  #hamburger{
+    display: none;
+  }
+  .menu{
+    display: block;
+  }
+  .menu ul {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pricing{
+    padding-bottom: 5rem ;
+  }
+  .pricing__container{
+    max-width: none;
+    flex-direction: row;
+  }
+  .pricing__container > div{
+    max-width: 372px;
+    flex-direction: column;
+  }
   .mail-phone{
     flex-direction: row;
   }
@@ -329,8 +419,22 @@ footer{
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   form{
     margin: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .nav__container{
+    width:90%;
+    margin:0 auto;
+  }
+  .menu{
+    display:flex;
+  }
+  .pricing__container{
+    flex-wrap:nowrap;
+    justify-content: center;
   }
 }
