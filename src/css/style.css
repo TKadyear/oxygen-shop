@@ -120,19 +120,24 @@ h1{
   padding: 15px;
   border-radius:0 0 5px 5px;
 }
+.pricing h4 {
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+}
 .pricing{
-  padding: 53px 18px;
+  padding: 53px 18px
+}
+.pricing__container{
+  margin:0 auto;
+  max-width: 422px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap:2.5rem;
 }
-.pricing h4 {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 400;
-}
-.pricing > div{
+.pricing__container > div{
   position: relative;
   padding: 20px 10px 50px;
   border: 1.5px solid black;
@@ -331,6 +336,10 @@ footer{
   gap:1rem;
 }
 @media only screen and (min-width: 768px) {
+  .pricing__container{
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+  }
   .mail-phone{
     flex-direction: row;
   }
