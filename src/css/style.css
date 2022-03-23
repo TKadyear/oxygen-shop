@@ -47,14 +47,16 @@ button{
 nav{
   position: sticky;
   padding: 17px 25px;
+  top:0;
+  z-index: 1;
+  background-color: var(--white);
+  box-shadow: 0 3px 6px var(--shadow-grey);
+}
+.nav__container{
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  top:0;
-  background-color: var(--white);
-  z-index: 1;
-  box-shadow: 0 3px 6px var(--shadow-grey);
 }
 .logo{
   margin: 0;
@@ -99,6 +101,7 @@ nav a {
 #hamburger:checked::after{
   background:none;
 }
+/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
   display: flex;
   flex-direction: column;
@@ -384,6 +387,10 @@ footer{
   }
 }
 @media only screen and (min-width: 1024px) {
+  .nav__container{
+    width:90%;
+    margin:0 auto;
+  }
   .menu{
     display:flex;
   }
