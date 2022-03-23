@@ -47,6 +47,9 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
+#bg{
+  max-width: 320px;
+}
 nav{
   position: sticky;
   padding: 17px 25px;
@@ -381,6 +384,9 @@ footer{
   gap:1rem;
 }
 @media only screen and (min-width: 768px) {
+  header{
+    height:max-content;
+  }
   /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
   #hamburger{
     display: none;
