@@ -227,18 +227,19 @@ h1{
 .pricing .premium{
   border-color: var(--special);
 }
-.pricing strong{
+.pricing mark{
+  background: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 46px;
   font-weight: 300;
 }
-.basic strong{
+.basic mark{
   color:var(--secundary);
 }
-.professional strong{
+.professional mark{
   color:var(--primary);
 }
-.premium strong{
+.premium mark{
   color:var(--special);
 }
 p.offer::after{
