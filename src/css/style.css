@@ -109,6 +109,7 @@ nav a {
 }
 /* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 2rem ;
@@ -125,16 +126,15 @@ nav a {
   padding: 1.25rem 3rem;
 }
 header{
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 450px;
+  background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
+  background-size: contain;
 }
 header >img{
   width: 100%;
   justify-self: flex-end;
 }
-.info-header button{
+.info-header{
   max-width: 440px;
 }
 .section__info h2{
@@ -437,9 +437,16 @@ footer{
   flex-direction: row;
   gap:1rem;
 }
+@media only screen and (orientation: landscape) {
+  header{
+    height: calc(100vw - 85px);
+  }
+}
 @media only screen and (min-width: 768px) {
   header{
-    height:max-content;
+    height: 550px;
+    background-image: url(/assets/img/bg-header.png);
+    background-size: contain;
   }
   /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
   #hamburger{
@@ -475,6 +482,9 @@ footer{
 
 }
 @media only screen and (min-width: 1024px) {
+  header{
+    height: 700px;
+  }
   .nav__container{
     width:90%;
     margin:0 auto;
