@@ -47,9 +47,6 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
-#bg{
-  max-width: 320px;
-}
 nav{
   position: sticky;
   padding: 17px 25px;
@@ -108,7 +105,6 @@ nav a {
 #hamburger:checked::after{
   background:none;
 }
-/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
   margin: 0 auto;
   display: flex;
@@ -204,6 +200,9 @@ h1{
   padding: 21px;
   border:1px solid var(--border-grey);
   border-radius: 5px;
+}
+.benefits__container__div img {
+ max-width: 387px;
 }
 .benefits__container__div--separate .benefits__container__div{
   border-radius: 5px 5px 0 0;
@@ -445,6 +444,9 @@ footer{
   flex-direction: row;
   gap:1rem;
 }
+.benefits__container__div hr{
+  display: none;
+}
 @media only screen and (orientation: landscape) {
   header{
     height: calc(100vw - 85px);
@@ -483,6 +485,25 @@ footer{
   .pricing__container > div{
     max-width: 372px;
     flex-direction: column;
+  }
+  /* BUG no va bien el hr */
+  .benefits__container__div hr{
+    align-self: flex-start;
+    display: block;
+    max-width: 330px;
+    height: 4px;
+    border: 0;
+    text-align: start;
+    background-color: #08A6E4;
+  }
+  .benefits__container__div .hr--secundary{
+    background-color: var(--secundary);
+  }
+  .benefits__container__div .hr--primary{
+    background-color: var(--primary);
+  }
+  .benefits__container__div .hr--special{
+    background-color:var(--special);
   }
   .benefits__container__div--separate {
     display: flex;
