@@ -189,11 +189,14 @@ h1{
   background-color: #F7F7F7;
   height: max-content;
   padding: 42px 30px;
+}
+.benefits__container{
   display: flex;
   flex-direction: column;
   gap: 42px;
+  max-width: 383px;
 }
-.reasons-sales > div {
+.benefits__container > div {
   background-color: var(--white);
   box-sizing: border-box;
   padding: 21px;
