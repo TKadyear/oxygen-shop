@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');:root{
+// @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+:root{
   --primary: #08A6E4;
   --secundary: #FB3B64;
   --special: #55DFB4;
@@ -47,9 +48,6 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
-#bg{
-  max-width: 320px;
-}
 nav{
   position: sticky;
   padding: 17px 25px;
@@ -79,6 +77,7 @@ nav a {
   color:  #A5A5A5;
   letter-spacing: 3.28px;
   font-size: 11px;
+  font-weight: 700;
   text-decoration:none ;
   text-transform: uppercase;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -107,8 +106,8 @@ nav a {
 #hamburger:checked::after{
   background:none;
 }
-/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 2rem ;
@@ -125,14 +124,58 @@ nav a {
   padding: 1.25rem 3rem;
 }
 header{
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 450px;
+  background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
+  background-size: contain;
 }
 header >img{
   width: 100%;
   justify-self: flex-end;
+}
+.info-header{
+  max-width: 440px;
+}
+.section__info h2{
+  text-align: center;
+  font-size: 30px;
+  font-weight:300;
+}
+.section__info__container{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.section__info__div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section__info__div__icon{
+  position: relative;
+}
+.section__info__div__icon__circle{
+  width: 63px;
+  height: 63px;
+  background-color: lightskyblue;
+  border-radius: 50%;
+}
+.section__info__div__icon__circle--bg-secundary{
+  background-color: var(--secundary);
+}
+.section__info__div__icon__circle--bg-primary{
+  background-color: var(--primary);
+}
+.section__info__div__icon__circle--bg-special{
+  background-color: var(--special);
+}
+.section__info__div__icon img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}
+.section__info__div__icon__circle--bg-primary~img{
+  left:30%;
 }
 h1{
   font-size: 35px;
@@ -143,26 +186,37 @@ h1{
   background-color: #F7F7F7;
   height: max-content;
   padding: 42px 30px;
+}
+.benefits__container{
   display: flex;
   flex-direction: column;
   gap: 42px;
+  margin: 0 auto;
+  max-width: 1124px;
 }
-.reasons-sales > div {
+
+.benefits__container__div {
+  max-height: 370px;
   background-color: var(--white);
   box-sizing: border-box;
   padding: 21px;
   border:1px solid var(--border-grey);
   border-radius: 5px;
 }
+.benefits__container__div img {
+ max-width: 387px;
+}
+.benefits__container__div--separate .benefits__container__div{
+  border-radius: 5px 5px 0 0;
+}
 .reasons-sales h3{
   font-weight: 400;
   font-size: 30px;
 }
 #trumpet{
-  background-color: var(--special);
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px;
+  height: 195px;
+  background:url(../assets/img/bg-trumpet.png) var(--special) no-repeat;
+  background-position: center;
   border-radius:0 0 5px 5px;
 }
 .pricing h4 {
@@ -270,6 +324,13 @@ li.disadvantages{
   left: 50%;
   transform: translateX(-50%);
 }
+.section-contact{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
 .contact h5{
   margin: 0;
   font-weight: 400;
@@ -279,8 +340,6 @@ li.disadvantages{
   margin: 0;
 }
 .contact{
-  width: 85%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
@@ -300,8 +359,7 @@ li.disadvantages{
   color: var(--grey);
 }
 form{
-  width: 85%;
-  margin:2.5rem auto;
+  margin:0;
   display: flex;
   flex-direction: column;
   gap:2.5rem;
@@ -367,11 +425,15 @@ footer{
   background-color: var(--white);
   padding: 21px 0;
   margin-top: 40px ;
+  box-shadow: 0 -5px 40px var(--shadow-grey);
+}
+.footer__container{
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 -5px 40px var(--shadow-grey);
 }
 .info-footer{
   display: flex;
@@ -384,9 +446,19 @@ footer{
   flex-direction: row;
   gap:1rem;
 }
-@media only screen and (min-width: 768px) {
+.benefits__container__div hr{
+  display: none;
+}
+@media only screen and (orientation: landscape) {
   header{
-    height:max-content;
+    height: calc(100vw - 85px);
+  }
+}
+@media only screen and (min-width: 767px) {
+  header{
+    height: 550px;
+    background-image: url(/assets/img/bg-header.png);
+    background-size: contain;
   }
   /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
   #hamburger{
@@ -400,6 +472,11 @@ footer{
     display: flex;
     justify-content: space-between;
   }
+  .section__info__container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
   .pricing{
     padding-bottom: 5rem ;
   }
@@ -411,21 +488,47 @@ footer{
     max-width: 372px;
     flex-direction: column;
   }
+  /* BUG no va bien el hr */
+  .benefits__container__div hr{
+    align-self: flex-start;
+    display: block;
+    max-width: 330px;
+    height: 4px;
+    border: 0;
+    text-align: start;
+    background-color: #08A6E4;
+  }
+  .benefits__container__div .hr--secundary{
+    background-color: var(--secundary);
+  }
+  .benefits__container__div .hr--primary{
+    background-color: var(--primary);
+  }
+  .benefits__container__div .hr--special{
+    background-color:var(--special);
+  }
+  .benefits__container__div--separate {
+    display: flex;
+    justify-content: space-between;
+  }
+  .benefits__container__div--separate .benefits__container__div{
+    width: 55%;
+  border-radius: 5px;
+  }
+  #trumpet{
+    height: auto;
+    width: 40%;
+    border-radius:5px;
+  }
   .mail-phone{
     flex-direction: row;
   }
-  .section-contact{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  form{
-    margin: 0;
-  }
+
 }
 @media only screen and (min-width: 1024px) {
+  header{
+    height: 700px;
+  }
   .nav__container{
     width:90%;
     margin:0 auto;
@@ -433,8 +536,20 @@ footer{
   .menu{
     display:flex;
   }
+  .section__info__container{
+    justify-content: space-evenly;
+  }
+
   .pricing__container{
     flex-wrap:nowrap;
     justify-content: center;
+  }
+  .section-contact{
+    margin: 3rem auto;
+    flex-flow:row wrap;
+    justify-content: space-between;
+  }
+  .contact,form{
+    width: calc(50% - 2.5rem);
   }
 }
