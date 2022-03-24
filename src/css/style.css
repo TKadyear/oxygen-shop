@@ -137,6 +137,11 @@ header >img{
 .info-header button{
   width: 330px;
 }
+.section__info h2{
+  text-align: center;
+  font-size: 30px;
+  font-weight:300;
+}
 .sales-info{
 
 }
