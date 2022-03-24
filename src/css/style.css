@@ -315,6 +315,13 @@ li.disadvantages{
   left: 50%;
   transform: translateX(-50%);
 }
+.section-contact{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
 .contact h5{
   margin: 0;
   font-weight: 400;
@@ -324,8 +331,6 @@ li.disadvantages{
   margin: 0;
 }
 .contact{
-  width: 85%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
@@ -345,8 +350,7 @@ li.disadvantages{
   color: var(--grey);
 }
 form{
-  width: 85%;
-  margin:2.5rem auto;
+  margin:0;
   display: flex;
   flex-direction: column;
   gap:2.5rem;
@@ -464,16 +468,7 @@ footer{
   .mail-phone{
     flex-direction: row;
   }
-  .section-contact{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  form{
-    margin: 0;
-  }
+
 }
 @media only screen and (min-width: 1024px) {
   .nav__container{
@@ -489,5 +484,13 @@ footer{
   .pricing__container{
     flex-wrap:nowrap;
     justify-content: center;
+  }
+  .section-contact{
+    margin: 3rem auto;
+    flex-flow:row wrap;
+    justify-content: space-between;
+  }
+  .contact,form{
+    width: calc(50% - 2.5rem);
   }
 }
