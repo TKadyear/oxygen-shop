@@ -416,11 +416,15 @@ footer{
   background-color: var(--white);
   padding: 21px 0;
   margin-top: 40px ;
+  box-shadow: 0 -5px 40px var(--shadow-grey);
+}
+.footer__container{
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 -5px 40px var(--shadow-grey);
 }
 .info-footer{
   display: flex;
