@@ -488,6 +488,7 @@ footer{
   .section-contact{
     margin: 3rem auto;
     flex-flow:row wrap;
+    justify-content: space-between;
   }
   .contact,form{
     width: calc(50% - 2.5rem);
