@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "vite",
+    "build": "rm -rf dist && vite build",
+    "preview": "vite preview"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TKadyear/oxygen-shop.git"
@@ -14,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/TKadyear/oxygen-shop/issues"
   },
-  "homepage": "https://github.com/TKadyear/oxygen-shop#readme"
+  "homepage": "https://github.com/TKadyear/oxygen-shop#readme",
+  "devDependencies": {
+    "sass": "^1.49.9"
+  },
+  "dependencies": {
+    "vite": "^2.8.6"
+  }
 }
