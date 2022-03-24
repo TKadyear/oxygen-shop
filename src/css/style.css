@@ -135,7 +135,7 @@ header >img{
   justify-self: flex-end;
 }
 .info-header button{
-  width: 330px;
+  max-width: 440px;
 }
 .section__info h2{
   text-align: center;
