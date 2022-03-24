@@ -195,6 +195,7 @@ h1{
 }
 
 .benefits__container__div {
+  max-height: 370px;
   background-color: var(--white);
   box-sizing: border-box;
   padding: 21px;
@@ -452,7 +453,7 @@ footer{
     height: calc(100vw - 85px);
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
   header{
     height: 550px;
     background-image: url(/assets/img/bg-header.png);
