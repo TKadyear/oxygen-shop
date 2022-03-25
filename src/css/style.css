@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
 :root{
   --primary: #08A6E4;
   --secundary: #FB3B64;
@@ -48,14 +48,11 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
-#bg{
-  max-width: 320px;
-}
 nav{
   position: sticky;
   padding: 17px 25px;
   top:0;
-  z-index: 1;
+  z-index: 2;
   background-color: var(--white);
   box-shadow: 0 3px 6px var(--shadow-grey);
 }
@@ -109,7 +106,6 @@ nav a {
 #hamburger:checked::after{
   background:none;
 }
-/* TODO Hay que añadirle padding top para que no tenga conflicto con el nav bar */
 .info-header{
   margin: 0 auto;
   display: flex;
@@ -190,26 +186,37 @@ h1{
   background-color: #F7F7F7;
   height: max-content;
   padding: 42px 30px;
+}
+.benefits__container{
   display: flex;
   flex-direction: column;
   gap: 42px;
+  margin: 0 auto;
+  max-width: 1124px;
 }
-.reasons-sales > div {
+
+.benefits__container__div {
+  max-height: max-content;
   background-color: var(--white);
   box-sizing: border-box;
   padding: 21px;
   border:1px solid var(--border-grey);
   border-radius: 5px;
 }
+.benefits__container__div img {
+ max-width: 387px;
+}
+.benefits__container__div--separate .benefits__container__div{
+  border-radius: 5px 5px 0 0;
+}
 .reasons-sales h3{
   font-weight: 400;
   font-size: 30px;
 }
 #trumpet{
-  background-color: var(--special);
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px;
+  height: 195px;
+  background:url(../assets/img/bg-trumpet.png) var(--special) no-repeat;
+  background-position: center;
   border-radius:0 0 5px 5px;
 }
 .pricing h4 {
@@ -241,6 +248,38 @@ h1{
   justify-content: space-between;
   align-items: center;
   transition: 0.4s;
+}
+.img--macbook, .img--iphone{
+  height: max-content;
+  position: relative;
+  max-width: 386px;
+}
+.img--macbook img, .img--iphone img{
+  position: relative;
+  width: 100%;
+  max-width: 386px;
+  z-index: 1;
+}
+.img--macbook::after{
+  content: "";
+  width: 90px;
+  height: 90px;
+  left: 60%;
+  top: -18px;
+  background: var(--secundary);
+  position: absolute;
+  border-radius: 50%;
+}
+.img--iphone::after{
+  content: "";
+  width: 100%;
+  max-width: 150px;
+  height: 100%;
+  max-height: 150px;
+  left: 0;
+  background: var(--primary);
+  position: absolute;
+  border-radius: 50%;
 }
 .pricing p {
   /* IMPROVE Hay que mirar alguna manera de poder igualar bien los tamaños de los textos  */
@@ -439,12 +478,27 @@ footer{
   flex-direction: row;
   gap:1rem;
 }
+.benefits__container__div hr{
+  display: none;
+}
 @media only screen and (orientation: landscape) {
   header{
     height: calc(100vw - 85px);
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 424px) {
+  .img--macbook::after{
+    width: 100%;
+    height: 100%;
+    max-width: 135px;
+    max-height: 135px;
+  }
+  .img--iphone::after{
+    max-width: 240px;
+    max-height: 240px;
+  }
+}
+@media only screen and (min-width: 767px) {
   header{
     height: 550px;
     background-image: url(/assets/img/bg-header.png);
@@ -478,6 +532,66 @@ footer{
     max-width: 372px;
     flex-direction: column;
   }
+  .benefits__container__div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .benefits__container__div__content{
+    width: 50%;
+  }
+  .benefits__container__div--no-flex {
+    display: block;
+  }
+  /* BUG no va bien el hr */
+  .benefits__container__div hr{
+    margin: 0;
+    align-self: flex-start;
+    display: block;
+    max-width: 330px;
+    height: 4px;
+    border: 0;
+    background-color: #08A6E4;
+  }
+  .benefits__container__div .hr--secundary{
+    background-color: var(--secundary);
+  }
+  .benefits__container__div .hr--primary{
+    background-color: var(--primary);
+  }
+  .benefits__container__div .hr--special{
+    background-color:var(--special);
+  }
+  .benefits__container__div--separate {
+    display: flex;
+    justify-content: space-between;
+  }
+  .benefits__container__div--separate .benefits__container__div{
+    width: 55%;
+    border-radius: 5px;
+  }
+  .img--iphone, .img--macbook{
+    width: 35%;
+  }
+  .img--macbook::after{
+    width: 120px;
+    height: 120px;
+    top: 0;
+    border-radius: 18px;
+    transform: rotate(-45deg);
+  }
+  .img--iphone{
+    order:1;
+  }
+  .img--iphone::after{
+    max-width: 190px;
+    max-height: 190px;
+  }
+  #trumpet{
+    height: auto;
+    width: 40%;
+    border-radius:5px;
+  }
   .mail-phone{
     flex-direction: row;
   }
@@ -494,9 +608,14 @@ footer{
   .menu{
     display:flex;
   }
+  .img--iphone::after{
+    max-width: 250px;
+    max-height: 250px;
+  }
   .section__info__container{
     justify-content: space-evenly;
   }
+
   .pricing__container{
     flex-wrap:nowrap;
     justify-content: center;
