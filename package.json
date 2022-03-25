@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "rm -rf dist && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/TKadyear/oxygen-shop#readme",
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "vite": "^2.8.6"
   }
 }
