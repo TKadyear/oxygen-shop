@@ -11,10 +11,19 @@
 </head>
 
 <body>
-  <!-- TODO Poner el alt a todas las imágenes y un ancho fijo -->
   <nav>
-    <p class="logo">OXYGENShop</p>
-    <div class="menu"></div>
+    <div class="nav__container">
+      <p class="logo">OXYGENShop</p>
+      <input type="checkbox" id="hamburger">
+      <div class="menu">
+        <ul>
+          <li><a href="#why-us">Why us</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#prices">Prices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
   <header>
     <div class="info-header">
@@ -22,104 +31,124 @@
       <p>Open shop on our platform and Increase your sales</p>
       <button class="btn-primary">Open your shop</button>
     </div>
-    <img src="./assets/img/background-header.png" alt="">
   </header>
   <main>
-    <section class="sales-info">
+    <section id="why-us" class="section__info">
       <h2>The most popular sales platform in country</h2>
-      <!-- TODO Poner el circulo de fondo ya sea con el color primario, secundario o el especial -->
-      <!-- TODO Dar estilo a Sales-info -->
-      <div>
-        <!-- <svg width="99.488mm" height="102.41mm" version="1.1" viewBox="0 0 99.488 102.41"
-          xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-57.791 -20.849)">
-            <ellipse cx="107.53" cy="72.055" rx="49.744" ry="51.207" fill="#2d8393" />
-          </g>
-        </svg> -->
-        <img src="./assets/img/icons/person.svg" alt="">
-        <p>100000+</p>
-        <p>daily entries</p>
-      </div>
-      <div>
-        <img src="./assets/img/icons/eye.svg" alt="">
-        <p>2000000+</p>
-        <p>seen products every day</p>
-      </div>
-      <div>
-        <img src="./assets/img/icons/catalog.svg" alt="">
-        <p>100000+</p>
-        <p>added posts daily</p>
-      </div>
-    </section>
-    <section class="reasons-sales">
-      <div>
-        <img class="secundary" src="./assets/img/macbook.png" alt="Macbook">
-        <h3>Be always first</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.</p>
-      </div>
-      <div>
-        <img class="primary" src="./assets/img/iphone.png" alt="Iphone">
-        <h3>Your shop is where you are!</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.</p>
-      </div>
-      <div>
-
-        <h3>Increase recognition your brand!</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.</p>
-        <!-- IMPROVE Esto no creo que tenga esta estructura -->
-        <img id="trumpet" src="./assets/img/trumpet.png" alt="Trompeta">
+      <div class="section__info__container">
+        <div class="section__info__div">
+          <div class="section__info__div__icon">
+            <div class="section__info__div__icon__circle section__info__div__icon__circle--bg-secundary"></div>
+            <img src="./assets/img/icons/person.svg" alt=" ">
+          </div>
+          <strong>100000+</strong>
+          <p>daily entries</p>
+        </div>
+        <div class="section__info__div">
+          <div class="section__info__div__icon">
+            <div class="section__info__div__icon__circle section__info__div__icon__circle--bg-primary"></div>
+            <img src="./assets/img/icons/eye.svg" alt=" ">
+          </div>
+          <strong>2000000+</strong>
+          <p>seen products every day</p>
+        </div>
+        <div class="section__info__div">
+          <div class="section__info__div__icon">
+            <div class="section__info__div__icon__circle section__info__div__icon__circle--bg-special"></div>
+            <img src="./assets/img/icons/catalog.svg" alt="">
+          </div>
+          <strong>100000+</strong>
+          <p>added posts daily</p>
+        </div>
       </div>
     </section>
-    <section class="pricing">
+    <section id="benefits" class="reasons-sales">
+      <div class="benefits__container">
+        <div class="benefits__container__div">
+          <div class="img--macbook">
+            <img src="./assets/img/Macbook.png" alt="Macbook">
+          </div>
+          <div class="benefits__container__div__content">
+            <h3>Be always first</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+              magna aliqua. Ut enim ad minim veniam.</p>
+            <hr class="hr--secundary">
+          </div>
+        </div>
+        <div class="benefits__container__div">
+          <div class="img--iphone">
+            <img src="./assets/img/iPhone.png" alt="Iphone">
+          </div>
+          <div class="benefits__container__div__content">
+            <h3>Your shop is where you are!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+              magna aliqua. Ut enim ad minim veniam.</p>
+            <hr class="hr--primary">
+          </div>
+        </div>
+        <div class="benefits__container__div--separate">
+          <div class="benefits__container__div benefits__container__div--no-flex">
+            <h3>Increase recognition your brand!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+              magna aliqua. Ut enim ad minim veniam.</p>
+            <hr class="hr--special">
+          </div>
+          <div id="trumpet"></div>
+        </div>
+      </div>
+    </section>
+    <section id="prices" class="pricing">
       <h4>Pricing</h4>
-      <div class="basic">
-        <p>
-          Basic
-          <mark>$0</mark>
-        </p>
-        <ul>
-          <li>100 MB HDD</li>
-          <li>1 Subdomain</li>
-          <li>2 E-mails</li>
-          <li class="disadvantages">Two years license</li>
-          <li class="disadvantages">Full support</li>
-        </ul>
-        <button class="btn-secundary">Begin</button>
-      </div>
-      <div class="professional">
-        <p class="offer">
-          Professional
-          <!-- IMPROVE Mejor sería poner otra etiqueta para este caso ya que no es exactamente "bold" -->
-          <mark>$25</mark>
-        </p>
-        <ul>
-          <li>500 MB HDD</li>
-          <li>2 Subdomain</li>
-          <li>5 E-mails</li>
-          <li>One years license</li>
-          <li class="disadvantages">Full support</li>
-        </ul>
-        <button class="btn-primary">Begin</button>
-      </div>
-      <div class="premium">
-        <p class="offer">
-          Premium
-          <mark>$60</mark>
-        </p>
-        <ul>
-          <li>2 GB HDD</li>
-          <li>5 Subdomain</li>
-          <li>20 E-mails</li>
-          <li>Two years license</li>
-          <li>Full support</li>
-        </ul>
-        <button class="btn-special">Begin</button>
+      <div class="pricing__container">
+        <div class="basic">
+          <p>
+            Basic
+            <mark>$0</mark>
+          </p>
+          <ul>
+            <li>100 MB HDD</li>
+            <li>1 Subdomain</li>
+            <li>2 E-mails</li>
+            <li class="disadvantages">Two years license</li>
+            <li class="disadvantages">Full support</li>
+          </ul>
+          <button class="btn-secundary">Begin</button>
+        </div>
+        <div class="professional">
+          <p class="offer">
+            Professional
+            <!-- IMPROVE Mejor sería poner otra etiqueta para este caso ya que no es exactamente "bold" -->
+            <mark>$25</mark>
+          </p>
+          <ul>
+            <li>500 MB HDD</li>
+            <li>2 Subdomain</li>
+            <li>5 E-mails</li>
+            <li>One years license</li>
+            <li class="disadvantages">Full support</li>
+          </ul>
+          <button class="btn-primary">Begin</button>
+        </div>
+        <div class="premium">
+          <p class="offer">
+            Premium
+            <mark>$60</mark>
+          </p>
+          <ul>
+            <li>2 GB HDD</li>
+            <li>5 Subdomain</li>
+            <li>20 E-mails</li>
+            <li>Two years license</li>
+            <li>Full support</li>
+          </ul>
+          <button class="btn-special">Begin</button>
+        </div>
       </div>
     </section>
-    <section class="section-contact">
+    <section id="contact" class="section-contact">
       <div class="contact">
         <div>
           <h5>Any Questions?</h5>
@@ -153,13 +182,15 @@
     </section>
   </main>
   <footer>
-    <div class="info-footer">
-      <p class="logo">OXYGENShop</p>
-      © 2022 OXYGEN, All Rights Reserved
-    </div>
-    <div class="social-media">
-      <a href="https://twitter.com/"><img src="./assets/img/icons/twitter.svg" alt="Icono de twitter"></a>
-      <a href="https://www.facebook.com/"><img src="./assets/img/icons/facebook.svg" alt="Icono de facebook"></a>
+    <div class="footer__container">
+      <div class="info-footer">
+        <p class="logo">OXYGENShop</p>
+        © 2022 OXYGEN, All Rights Reserved
+      </div>
+      <div class="social-media">
+        <a href="https://twitter.com/"><img src="./assets/img/icons/twitter.svg" alt="Icono de twitter"></a>
+        <a href="https://www.facebook.com/"><img src="./assets/img/icons/facebook.svg" alt="Icono de facebook"></a>
+      </div>
     </div>
   </footer>
 
