@@ -423,7 +423,7 @@ input[type=text]:focus-visible,input[type=email]:focus-visible{
   outline:none;
   border-bottom: 2px solid var(--primary);
 }
-input[type=checkbox]{
+.form__checkbox{
   appearance: none;
   position: relative;
   width: 24px;
@@ -431,7 +431,7 @@ input[type=checkbox]{
   border:1px solid var(--grey);
   border-radius: 4px;
 }
-input[type=checkbox]:checked::after{
+.form__checkbox:checked::after{
   position: absolute;
   content: "";
   width: 12px;
@@ -454,7 +454,7 @@ input[type=checkbox]:checked::after{
   text-transform:none;
   letter-spacing: 0;
 }
-footer{
+.footer{
   background-color: var(--white);
   padding: 21px 0;
   margin-top: 40px ;
@@ -468,13 +468,13 @@ footer{
   justify-content: space-between;
   align-items: center;
 }
-.info-footer{
+.footer__info{
   display: flex;
   flex-direction: column;
   font-size: 11px;
   color:var(--shadow-grey)
 }
-.social-media{
+.footer__social_media{
   display: flex;
   flex-direction: row;
   gap:1rem;
