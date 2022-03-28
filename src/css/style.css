@@ -87,6 +87,8 @@ nav a {
   display: none;
 }
 #hamburger{
+  cursor:pointer;
+  appearance: none;
   width: 20px;
   height: 12px;
   background:url(../assets/img/icons/menu.svg) no-repeat;
@@ -102,10 +104,6 @@ nav a {
   width:14px;
   height: 14px;
   background-image :url(../assets/img/icons/cross-menu.svg);
-}
-/* BUG Hay que quitar el estilo general que se le da al input para evitar tener que hacer esto */
-#hamburger:checked::after{
-  background:none;
 }
 .info-header{
   margin: 0 auto;
