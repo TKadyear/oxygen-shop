@@ -245,14 +245,14 @@ button{
   position: absolute;
   border-radius: 50%;
 }
+.pricing{
+  padding: 3.5rem 1.75rem;
+}
 .pricing h4 {
   margin-top: 0;
   font-size: 36px;
   font-weight: 400;
   text-align: center;
-}
-.pricing{
-  padding: 3.5rem 3rem;
 }
 .pricing__container{
   margin:0 auto;
@@ -269,7 +269,6 @@ button{
   border-radius: 18px;
   display: flex;
   flex-direction: row;
-  /* TODO Corregir tamaños */
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -333,19 +332,19 @@ button{
   margin: 0;
   padding-left: 25px ;
 }
-.pricing ul li{
+.price__list__item{
   margin: 20px auto;
 }
-.pricing ul li:first-child{
+.price__list .price__list__item:first-child{
   margin-top: 0;
 }
-.pricing ul li:last-child{
+.price__list .price__list__item:last-child{
   margin-bottom: 0;
 }
-li.disadvantages{
+.price__list__item--cross{
   list-style-image: url(../assets/img/icons/Cross.svg);
 }
-.pricing div > button{
+.price__btn{
   position: absolute;
   bottom: -1.5rem;
   left: 50%;
