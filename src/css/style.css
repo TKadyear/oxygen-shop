@@ -631,7 +631,7 @@ button{
     flex-wrap:nowrap;
     justify-content: center;
   }
-  .section-contact{
+  .section__contact{
     margin: 3rem auto;
     flex-flow:row wrap;
     justify-content: space-between;
