@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -11,26 +11,26 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="nav">
     <div class="nav__container">
       <p class="logo">OXYGENShop</p>
       <input type="checkbox" id="hamburger">
-      <div class="menu">
-        <ul>
-          <li><a href="#why-us">Why us</a></li>
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#prices">Prices</a></li>
-          <li><a href="#contact">Contact</a></li>
+      <div class="nav__menu">
+        <ul class="nav__menu__ul">
+          <li><a class="nav__menu__a" href="#why-us">Why us</a></li>
+          <li><a class="nav__menu__a" href="#benefits">Benefits</a></li>
+          <li><a class="nav__menu__a" href="#prices">Prices</a></li>
+          <li><a class="nav__menu__a" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="percentage-scroller"></div>
-  <header>
-    <div class="info-header">
-      <h1>Sell More!</h1>
-      <p>Open shop on our platform and Increase your sales</p>
-      <button class="btn-primary">Open your shop</button>
+  <header class="header">
+    <div class="header__info">
+      <h1 class="header__info_h1">Sell More!</h1>
+      <p class="header__info__p">Open shop on our platform and Increase your sales</p>
+      <button class="header__info__btn btn-primary">Open your shop</button>
     </div>
   </header>
   <main>
@@ -104,91 +104,91 @@
     <section id="prices" class="pricing">
       <h4>Pricing</h4>
       <div class="pricing__container">
-        <div class="basic">
-          <p>
+        <div class="pricing__container__price pricing__container__price--color-secundary basic">
+          <p class="pricing__container__price__p">
             Basic
             <mark>$0</mark>
           </p>
-          <ul>
-            <li>100 MB HDD</li>
-            <li>1 Subdomain</li>
-            <li>2 E-mails</li>
-            <li class="disadvantages">Two years license</li>
-            <li class="disadvantages">Full support</li>
+          <ul class="price__list">
+            <li class="price__list__item">100 MB HDD</li>
+            <li class="price__list__item">1 Subdomain</li>
+            <li class="price__list__item">2 E-mails</li>
+            <li class="price__list__item price__list__item--cross">Two years license</li>
+            <li class="price__list__item price__list__item--cross">Full support</li>
           </ul>
-          <button class="btn-secundary">Begin</button>
+          <button class="price__btn btn-secundary">Begin</button>
         </div>
-        <div class="professional">
-          <p class="offer">
+        <div class="pricing__container__price professional">
+          <p class="pricing__container__price__p pricing__container__price__p--offer offer">
             Professional
-            <!-- IMPROVE Mejor sería poner otra etiqueta para este caso ya que no es exactamente "bold" -->
             <mark>$25</mark>
           </p>
-          <ul>
-            <li>500 MB HDD</li>
-            <li>2 Subdomain</li>
-            <li>5 E-mails</li>
-            <li>One years license</li>
-            <li class="disadvantages">Full support</li>
+          <ul class="price__list">
+            <li class="price__list__item">500 MB HDD</li>
+            <li class="price__list__item">2 Subdomain</li>
+            <li class="price__list__item">5 E-mails</li>
+            <li class="price__list__item">One years license</li>
+            <li class="price__list__item price__list__item--cross">Full support</li>
           </ul>
-          <button class="btn-primary">Begin</button>
+          <button class="price__btn btn-primary">Begin</button>
         </div>
-        <div class="premium">
-          <p class="offer">
+        <div class="pricing__container__price premium">
+          <p class="pricing__container__price__p pricing__container__price__p--offer">
             Premium
             <mark>$60</mark>
           </p>
-          <ul>
-            <li>2 GB HDD</li>
-            <li>5 Subdomain</li>
-            <li>20 E-mails</li>
-            <li>Two years license</li>
-            <li>Full support</li>
+          <ul class="price__list">
+            <li class="price__list__item">2 GB HDD</li>
+            <li class="price__list__item">5 Subdomain</li>
+            <li class="price__list__item">20 E-mails</li>
+            <li class="price__list__item">Two years license</li>
+            <li class="price__list__item">Full support</li>
           </ul>
-          <button class="btn-special">Begin</button>
+          <button class="price__btn btn-special">Begin</button>
         </div>
       </div>
     </section>
-    <section id="contact" class="section-contact">
+    <section id="contact" class="section__contact">
       <div class="contact">
         <div>
-          <h5>Any Questions?</h5>
-          <p>Leave your email address or call us!</p>
+          <h5 class="contact__h5">Any Questions?</h5>
+          <p class="contact__p">Leave your email address or call us!</p>
         </div>
-        <div class="mail-phone">
-          <p><img src="./assets/img/icons/mail.svg" alt="">info@bestshop.xyz</p>
-          <p><img src="./assets/img/icons/phone.svg" alt="">123 456 789</p>
+        <div class="contact__info">
+          <p class="contact__info__p"><img src="./assets/img/icons/mail.svg" alt=" ">info@bestshop.xyz</p>
+          <p class="contact__info__p"><img src="./assets/img/icons/phone.svg" alt=" ">123 456 789</p>
         </div>
       </div>
-      <form>
-        <label>
+      <form class="form">
+        <label class="form__label">
           Name
-          <input type="text" name="name-person" minlength="2" maxlength="100" required>
+          <input class="form__input" type="text" name="name-person" minlength="2" maxlength="100" required>
         </label>
-        <label>
+        <label class="form__label">
           Email
-          <input type="email" name="email" required>
+          <input class="form__input" type="email" name="email" required>
         </label>
-        <label id="data-protection" for="data-protection">
-          <input type="checkbox" name="data-protection" required>
-          <p> I hereby give consent for my personal data included in my application to be processed for the purposes of
+        <label class="form__label form__label--checkbox" id="data-protection">
+          <input class="form__checkbox" type="checkbox" name="data-protection" required>
+          <p class="form__label__p"> I hereby give consent for my personal data included in my application to be
+            processed for the purposes of
             the
             recruitment process under the European Parliament’s and Council of the European Union Regulation on the
             Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
             free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
           </p>
         </label>
-        <button class="btn-primary">Send</button>
+        <button class="form__btn btn-primary">Send</button>
       </form>
     </section>
   </main>
-  <footer>
+  <footer class="footer">
     <div class="footer__container">
-      <div class="info-footer">
+      <div class="footer__info">
         <p class="logo">OXYGENShop</p>
         © 2022 OXYGEN, All Rights Reserved
       </div>
-      <div class="social-media">
+      <div class="footer__social_media">
         <a href="https://twitter.com/"><img src="./assets/img/icons/twitter.svg" alt="Icono de twitter"></a>
         <a href="https://www.facebook.com/"><img src="./assets/img/icons/facebook.svg" alt="Icono de facebook"></a>
       </div>
