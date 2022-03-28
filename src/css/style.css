@@ -19,7 +19,14 @@ body{
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
   font-family: 'Raleway', sans-serif;
 }
+.percentage-scroller{
+  height: 4px;
+  position: fixed;
+  z-index: 999;
+  background: var(--primary)
+}
 button{
+  cursor:pointer;
   padding:1rem 3rem;
   border: 1px solid transparent;
   border-radius: 2rem;
