@@ -56,6 +56,21 @@ button{
 .btn-primary:hover{
   background-color: var(--primary);
 }
+.btn__scroll_up{
+  position: fixed;
+  right: 1rem;
+  bottom: 10%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:var(--white);
+  border:1px solid var(--primary);
+  transition: background 200ms;
+  z-index: 1;
+}
+.btn__scroll_up:hover{
+  background: var(--primary);
+}
 .nav{
   position: sticky;
   padding: 17px 25px;
