@@ -70,11 +70,11 @@ button{
   font-weight: 300;
   font-size: 26px;
 }
-nav ul{
+.nav__menu__ul{
   list-style-type: none;
   padding:0;
 }
-nav a {
+.nav__menu__a {
   color:  #A5A5A5;
   letter-spacing: 3.28px;
   font-size: 11px;
@@ -105,7 +105,7 @@ nav a {
   height: 14px;
   background-image :url(../assets/img/icons/cross-menu.svg);
 }
-.info-header{
+.header__info{
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -113,25 +113,21 @@ nav a {
   text-align: center;
 }
 /* IMPROVE Hay que mejorar la colocación de estos elementos ya que esta con margenes */
-.info-header> p{
+.header__info__p{
   margin-top:0;
   margin-bottom: 51px ;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
 }
-.info-header>button{
+.header__info__btn{
   padding: 1.25rem 3rem;
 }
-header{
+.header{
   height: 450px;
   background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
   background-size: contain;
 }
-header >img{
-  width: 100%;
-  justify-self: flex-end;
-}
-.info-header{
+.header__info{
   max-width: 440px;
 }
 .section__info h2{
@@ -176,11 +172,10 @@ header >img{
 .section__info__div__icon__circle--bg-primary~img{
   left:30%;
 }
-h1{
+.header__info_h1{
   font-size: 35px;
   font-weight: 400;
 }
-
 .reasons-sales{
   background-color: #F7F7F7;
   height: max-content;
@@ -488,7 +483,7 @@ li.disadvantages{
   display: none;
 }
 @media only screen and (orientation: landscape) {
-  header{
+  .header{
     height: calc(100vw - 85px);
   }
 }
@@ -505,7 +500,7 @@ li.disadvantages{
   }
 }
 @media only screen and (min-width: 767px) {
-  header{
+  .header{
     height: 550px;
     background-image: url(/assets/img/bg-header.png);
     background-size: contain;
@@ -607,7 +602,7 @@ li.disadvantages{
 
 }
 @media only screen and (min-width: 1024px) {
-  header{
+  .header{
     height: 700px;
   }
   .nav__container{
