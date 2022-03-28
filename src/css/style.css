@@ -105,6 +105,12 @@ button{
   height: 14px;
   background-image :url(../assets/img/icons/cross-menu.svg);
 }
+.header{
+  height: 450px;
+  margin-bottom: 3.5rem ;
+  background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
+  background-size: contain;
+}
 .header__info{
   margin: 0 auto;
   display: flex;
@@ -121,11 +127,6 @@ button{
 }
 .header__info__btn{
   padding: 1.25rem 3rem;
-}
-.header{
-  height: 450px;
-  background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
-  background-size: contain;
 }
 .header__info{
   max-width: 440px;
