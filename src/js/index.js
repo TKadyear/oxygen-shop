@@ -1,4 +1,8 @@
 const blockScrollBody = (block) => block ? document.body.classList.add("block__scroll") : document.body.classList.remove("block__scroll")
+const isValidEmail = (email) => {
+  const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return RegeXEmail.test(email)
+}
 const addEventsToNewsletter = () => {
   const bgNewsletter = document.querySelector("#newsletter__bg")
   const closeNewsletter = (e) => {
@@ -7,8 +11,27 @@ const addEventsToNewsletter = () => {
     blockScrollBody(false);
     bgNewsletter.remove()
   }
-  bgNewsletter.addEventListener("click", closeNewsletter)
-
+  bgNewsletter.addEventListener("click", (e) => {
+    e.stopPropagation()
+    if (e.target === bgNewsletter) {
+      closeNewsletter(e)
+    }
+  })
+  document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const inputEmail = document.querySelector("input[type=email].info__newsletter__input").value;
+    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
+    if (isValidEmail(inputEmail) && consentCheckbox) {
+      const dataNewsletter = {
+        email: inputEmail,
+        consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
+      }
+      closeNewsletter(e);
+    } else {
+      console.error("Faltan datos de los requeridos");
+    }
+  })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
     closeNewsletter(e);
   })
@@ -16,6 +39,7 @@ const addEventsToNewsletter = () => {
     closeNewsletter(e);
   })
 }
+
 const createPopUpNewsletter = () => {
   if (!document.querySelector(".info__newsletter__container")) {
     const template = /*html */`
