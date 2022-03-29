@@ -1,13 +1,14 @@
-const ScrollUp = () => {
-  const currentScroll = document.body.scrollTop
-  console.log(currentScroll)
-  // window.requestAnimationFrame()
+const scrollToHeader = () => {
+  const currentScroll = window.scrollY
+  if (currentScroll > 10) {
+    window.scrollTo(0, currentScroll - (currentScroll / 25));
+    window.requestAnimationFrame(scrollToHeader);
+  }
 }
 
 const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
-  setTimeout(() => window.scrollTo(0, 0), 200)
-  ScrollUp()
+  setTimeout(() => scrollToHeader(), 200)
 })
 
 window.addEventListener("scroll", () => {
