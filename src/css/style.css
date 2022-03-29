@@ -57,19 +57,35 @@ button{
   background-color: var(--primary);
 }
 .btn__scroll_up{
+  box-sizing: content-box;
   position: fixed;
   right: 1rem;
   bottom: 10%;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background:var(--white);
-  border:1px solid var(--primary);
-  transition: background 200ms;
+  background: var(--white) no-repeat;
+  border:2px solid var(--primary);
+  transition: 200ms;
   z-index: 1;
 }
+.btn__scroll_up__icon{
+  position: relative;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  fill: var(--primary);
+  stroke: var(--primary);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .btn__scroll_up:hover{
-  background: var(--primary);
+  background-color: var(--primary);
+}
+.btn__scroll_up:hover .btn__scroll_up__icon{
+  fill:var(--white);
+  stroke: var(--white);
 }
 .nav{
   position: sticky;
