@@ -1,46 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  
+  <script type="moodule" src="js/index.js"></script>
   <title>Oxygen Shop</title>
-  <script type="module" crossorigin src="/oxygen-shop/index.90ff5918.js"></script>
-  <link rel="stylesheet" href="/oxygen-shop/index.4e346fe6.css">
+  <link rel="stylesheet" href="/oxygen-shop/index.70af9788.css">
 </head>
 
 <body>
-  <nav class="nav">
+  <nav>
     <div class="nav__container">
       <p class="logo">OXYGENShop</p>
       <input type="checkbox" id="hamburger">
-      <div class="nav__menu">
-        <ul class="nav__menu__ul">
-          <li><a class="nav__menu__a" href="#why-us">Why us</a></li>
-          <li><a class="nav__menu__a" href="#benefits">Benefits</a></li>
-          <li><a class="nav__menu__a" href="#prices">Prices</a></li>
-          <li><a class="nav__menu__a" href="#contact">Contact</a></li>
+      <div class="menu">
+        <ul>
+          <li><a href="#why-us">Why us</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#prices">Prices</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="percentage-scroller"></div>
-  <header class="header">
-    <div class="header__info">
-      <h1 class="header__info_h1">Sell More!</h1>
-      <p class="header__info__p">Open shop on our platform and Increase your sales</p>
-      <button class="header__info__btn btn-primary">Open your shop</button>
+  <header>
+    <div class="info-header">
+      <h1>Sell More!</h1>
+      <p>Open shop on our platform and Increase your sales</p>
+      <button class="btn-primary">Open your shop</button>
     </div>
   </header>
   <main>
-    <div class="btn__scroll_up">
-      <svg class="btn__scroll_up__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-        <path d="M11 20V7.75L5.75 13 5 12.34l6.5-6.5 6.5 6.5-.75.66L12 7.75V20h-1Z" />
-      </svg>
-    </div>
     <section id="why-us" class="section__info">
       <h2>The most popular sales platform in country</h2>
       <div class="section__info__container">
@@ -111,91 +104,91 @@
     <section id="prices" class="pricing">
       <h4>Pricing</h4>
       <div class="pricing__container">
-        <div class="pricing__container__price pricing__container__price--color-secundary basic">
-          <p class="pricing__container__price__p">
+        <div class="basic">
+          <p>
             Basic
             <mark>$0</mark>
           </p>
-          <ul class="price__list">
-            <li class="price__list__item">100 MB HDD</li>
-            <li class="price__list__item">1 Subdomain</li>
-            <li class="price__list__item">2 E-mails</li>
-            <li class="price__list__item price__list__item--cross">Two years license</li>
-            <li class="price__list__item price__list__item--cross">Full support</li>
+          <ul>
+            <li>100 MB HDD</li>
+            <li>1 Subdomain</li>
+            <li>2 E-mails</li>
+            <li class="disadvantages">Two years license</li>
+            <li class="disadvantages">Full support</li>
           </ul>
-          <button class="price__btn btn-secundary">Begin</button>
+          <button class="btn-secundary">Begin</button>
         </div>
-        <div class="pricing__container__price professional">
-          <p class="pricing__container__price__p pricing__container__price__p--offer offer">
+        <div class="professional">
+          <p class="offer">
             Professional
+            <!-- IMPROVE Mejor sería poner otra etiqueta para este caso ya que no es exactamente "bold" -->
             <mark>$25</mark>
           </p>
-          <ul class="price__list">
-            <li class="price__list__item">500 MB HDD</li>
-            <li class="price__list__item">2 Subdomain</li>
-            <li class="price__list__item">5 E-mails</li>
-            <li class="price__list__item">One years license</li>
-            <li class="price__list__item price__list__item--cross">Full support</li>
+          <ul>
+            <li>500 MB HDD</li>
+            <li>2 Subdomain</li>
+            <li>5 E-mails</li>
+            <li>One years license</li>
+            <li class="disadvantages">Full support</li>
           </ul>
-          <button class="price__btn btn-primary">Begin</button>
+          <button class="btn-primary">Begin</button>
         </div>
-        <div class="pricing__container__price premium">
-          <p class="pricing__container__price__p pricing__container__price__p--offer">
+        <div class="premium">
+          <p class="offer">
             Premium
             <mark>$60</mark>
           </p>
-          <ul class="price__list">
-            <li class="price__list__item">2 GB HDD</li>
-            <li class="price__list__item">5 Subdomain</li>
-            <li class="price__list__item">20 E-mails</li>
-            <li class="price__list__item">Two years license</li>
-            <li class="price__list__item">Full support</li>
+          <ul>
+            <li>2 GB HDD</li>
+            <li>5 Subdomain</li>
+            <li>20 E-mails</li>
+            <li>Two years license</li>
+            <li>Full support</li>
           </ul>
-          <button class="price__btn btn-special">Begin</button>
+          <button class="btn-special">Begin</button>
         </div>
       </div>
     </section>
-    <section id="contact" class="section__contact">
+    <section id="contact" class="section-contact">
       <div class="contact">
         <div>
-          <h5 class="contact__h5">Any Questions?</h5>
-          <p class="contact__p">Leave your email address or call us!</p>
+          <h5>Any Questions?</h5>
+          <p>Leave your email address or call us!</p>
         </div>
-        <div class="contact__info">
-          <p class="contact__info__p"><img src="/oxygen-shop/mail.9e8e4b2d.svg" alt=" ">info@bestshop.xyz</p>
-          <p class="contact__info__p"><img src="/oxygen-shop/phone.f3f3b7a4.svg" alt=" ">123 456 789</p>
+        <div class="mail-phone">
+          <p><img src="/oxygen-shop/mail.9e8e4b2d.svg" alt="">info@bestshop.xyz</p>
+          <p><img src="/oxygen-shop/phone.f3f3b7a4.svg" alt="">123 456 789</p>
         </div>
       </div>
-      <form class="form">
-        <label class="form__label">
+      <form>
+        <label>
           Name
-          <input class="form__input" type="text" name="name-person" minlength="2" maxlength="100" required>
+          <input type="text" name="name-person" minlength="2" maxlength="100" required>
         </label>
-        <label class="form__label">
+        <label>
           Email
-          <input class="form__input" type="email" name="email" required>
+          <input type="email" name="email" required>
         </label>
-        <label class="form__label form__label--checkbox" id="data-protection">
-          <input class="form__checkbox" type="checkbox" name="data-protection" required>
-          <p class="form__label__p"> I hereby give consent for my personal data included in my application to be
-            processed for the purposes of
+        <label id="data-protection" for="data-protection">
+          <input type="checkbox" name="data-protection" required>
+          <p> I hereby give consent for my personal data included in my application to be processed for the purposes of
             the
             recruitment process under the European Parliament’s and Council of the European Union Regulation on the
             Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
             free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
           </p>
         </label>
-        <button class="form__btn btn-primary">Send</button>
+        <button class="btn-primary">Send</button>
       </form>
     </section>
   </main>
-  <footer class="footer">
+  <footer>
     <div class="footer__container">
-      <div class="footer__info">
+      <div class="info-footer">
         <p class="logo">OXYGENShop</p>
         © 2022 OXYGEN, All Rights Reserved
       </div>
-      <div class="footer__social_media">
+      <div class="social-media">
         <a href="https://twitter.com/"><img src="/oxygen-shop/twitter.8ff36b1c.svg" alt="Icono de twitter"></a>
         <a href="https://www.facebook.com/"><img src="/oxygen-shop/facebook.752e303d.svg" alt="Icono de facebook"></a>
       </div>
