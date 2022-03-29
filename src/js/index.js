@@ -90,6 +90,11 @@ const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200)
 })
+const selectCurrency = document.querySelector(".pricing__currency__select")
+selectCurrency.addEventListener("change", () => {
+  const prices = document.querySelectorAll(".pricing__container__price__p mark")
+  console.log("he cambiado", selectCurrency.value)
+})
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
