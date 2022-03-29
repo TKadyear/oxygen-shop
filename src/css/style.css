@@ -352,8 +352,16 @@ button{
   font-weight: 400;
   text-align: center;
 }
+.pricing__currency{
+  text-align: end;
+}
+.pricing__currency__select{
+  padding: 0.125rem 0.75em;
+}
+.pricing__currency__select__option{
+}
 .pricing__container{
-  margin:0 auto;
+  margin:1rem auto;
   max-width: 422px;
   display: flex;
   flex-direction: column;
