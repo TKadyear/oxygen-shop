@@ -1,6 +1,6 @@
 const scrollToHeader = () => {
   const currentScroll = window.scrollY
-  if (currentScroll > 10) {
+  if (currentScroll > 0) {
     window.scrollTo(0, currentScroll - (currentScroll / 25));
     window.requestAnimationFrame(scrollToHeader);
   }
