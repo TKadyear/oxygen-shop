@@ -203,7 +203,7 @@ button{
 }
 .header{
   height: 450px;
-  margin-bottom: 3.5rem ;
+  margin-bottom: 5rem ;
   background:  url(../assets/img/bg-header-mobile.png) no-repeat bottom;
   background-size: contain;
 }
@@ -233,6 +233,7 @@ button{
   font-weight:300;
 }
 .section__info__container{
+  padding: 4.5rem 0;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -276,7 +277,7 @@ button{
 .reasons-sales{
   background-color: #F7F7F7;
   height: max-content;
-  padding: 42px 30px;
+  padding: 6.5rem 2rem;
 }
 .benefits__container{
   display: flex;
@@ -343,7 +344,7 @@ button{
   border-radius: 50%;
 }
 .pricing{
-  padding: 3.5rem 1.75rem;
+  padding: 6.5rem 1.75rem;
 }
 .pricing h4 {
   margin-top: 0;
