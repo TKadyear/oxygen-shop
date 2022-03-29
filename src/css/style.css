@@ -22,46 +22,7 @@ body{
 .block__scroll{
   overflow-y: hidden;
 }
-.info__newsletter__container {
-  background: var(--shadow-grey);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 3;
-}
-.info__newsletter {
-  background: var(--white);
-  box-shadow: 5px 10px 27px var(--shadow-primary);
-  position: fixed;
-  padding: 2rem;
-  min-width: 200px;
-  max-width: 500px;
-  top: 50%;
-  left:50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: max-content;
-  border-radius: 18px;
-  z-index: 10;
-}
-.info__newsletter_h6{
-  font-size: 2rem;
-  font-weight: 400;
-  margin: 0;
-}
-.info__newsletter_p{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.info__newsletter__label{
-  margin: 2rem auto;
-}
-.percentage-scroller{
-  height: 4px;
-  background: var(--primary);
-  position: fixed;
-  z-index: 2;
-  transition: 200ms;
-}
+
 button{
   cursor:pointer;
   padding:1rem 3rem;
@@ -122,6 +83,67 @@ button{
 .btn__scroll_up:hover .btn__scroll_up__icon{
   fill:var(--white);
   stroke: var(--white);
+}
+.info__newsletter__container {
+  background: var(--shadow-grey);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+.info__newsletter {
+  background: var(--white);
+  box-shadow: 5px 10px 27px var(--shadow-primary);
+  position: fixed;
+  padding: 2rem;
+  min-width: 200px;
+  max-width: 650px;
+  top: 50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: max-content;
+  border-radius: 18px;
+  z-index: 10;
+}
+.info__newsletter_h6{
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+}
+.info__newsletter_p{
+  color:var(--grey);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.info__newsletter__label{
+  margin: 2rem auto;
+}
+.percentage-scroller{
+  height: 4px;
+  background: var(--primary);
+  position: fixed;
+  z-index: 2;
+  transition: 200ms;
+}
+.info__newsletter__form__container__btn{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  gap: 1.5rem;
+}
+.newsletter__btn{
+  padding: 1rem 4rem;
+}
+.info__newsletter__btn__close{
+  cursor:pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.newsletter__btn--exit{
+  padding: 0 1rem;
+  background: none;
+  color: var(--grey);
 }
 .nav{
   position: sticky;
@@ -472,7 +494,7 @@ button{
   max-width: 225px;
   align-self: flex-end;
 }
-.form__label{
+.form__label, .info__newsletter__label{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -483,12 +505,12 @@ button{
   letter-spacing: 3px;
   text-transform:uppercase;
 }
-.form__input{
+.form__input, .info__newsletter__input{
   width: 100%;
   border:0;
   border-bottom: 1px solid var(--grey);
 }
-.form__input:focus-visible{
+.form__input:focus-visible, .info__newsletter__input:focus-visible{
   border:0;
   outline:none;
   border-bottom: 2px solid var(--primary);
@@ -496,7 +518,7 @@ button{
 .form__input-invalid{
   border-bottom: 2px solid var(--secundary);
 }
-.form__checkbox{
+.form__checkbox, .info__newsletter__checkbox{
   cursor:pointer;
   appearance: none;
   position: relative;
@@ -505,7 +527,7 @@ button{
   border:1px solid var(--grey);
   border-radius: 4px;
 }
-.form__checkbox:checked::after{
+.form__checkbox:checked::after, .info__newsletter__checkbox:checked::after{
   position: absolute;
   content: "";
   width: 12px;
@@ -515,12 +537,13 @@ button{
   background: url(../assets/img/icons/checkmark.svg) no-repeat;
   background-size: contain;
 }
-.form__label--checkbox{
+.form__label--checkbox, .info__newsletter__label--checkbox{
   display:flex;
   flex-direction: row;
   gap:10px;
 }
-.form__label--checkbox > .form__label__p{
+.form__label--checkbox > .form__label__p,
+.info__newsletter__label--checkbox > .info__newsletter__label__p{
   width: calc(100% - 31px);
   margin: 0;
   color: var(--grey);
@@ -618,7 +641,6 @@ button{
   .benefits__container__div--no-flex {
     display: block;
   }
-  /* BUG no va bien el hr */
   .benefits__container__div hr{
     margin: 0;
     align-self: flex-start;
@@ -703,7 +725,7 @@ button{
     flex-flow:row wrap;
     justify-content: space-between;
   }
-  .contact,form{
+  .contact,.form{
     width: calc(50% - 2.5rem);
   }
 }
