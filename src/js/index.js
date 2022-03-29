@@ -93,7 +93,12 @@ btnScroll.addEventListener("click", () => {
 const selectCurrency = document.querySelector(".pricing__currency__select")
 selectCurrency.addEventListener("change", () => {
   const prices = document.querySelectorAll(".pricing__container__price__p mark")
-  console.log("he cambiado", selectCurrency.value)
+  prices.forEach(price => {
+    const symbol = price.innerText.replace(/\d/, "");
+    const number = Number(price.innerText.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
+    console.log(symbol)
+    price.innerText = Math.round(((number * 100) * 0.910051) / 100) + "€"
+  })
 })
 
 window.addEventListener("scroll", () => {
