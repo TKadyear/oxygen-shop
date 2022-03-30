@@ -15,10 +15,32 @@ const postForm = (info) => {
     .then((response) => response.json())
     .then((json) => console.log(json));
 }
+function saveInSession(type) {
+  const item = "keepRecomendNewsletter"
+  const value = false;
+  switch (type) {
+    case "local":
+      localStorage.setItem(item, JSON.stringify(value))
+      break;
+    case "session":
+      sessionStorage.setItem(item, JSON.stringify(value))
+      break;
+  }
+}
+// IMPROVE El nombre de esta función es más bien lioso con respecto a lo que devuelve
+const hasBeenDisplayNewsletter = () => {
+  const createNewsletter = localStorage.getItem("keepRecomendNewsletter") || sessionStorage.getItem("keepRecomendNewsletter")
+  if (createNewsletter != null) {
+    return false;
+  }
+  return true;
+}
 
 const displayPopUpNewsletter = () => {
-  document.querySelector(".info__newsletter__container").classList.toggle("hidden");
-  blockScrollBody();
+  if (hasBeenDisplayNewsletter()) {
+    document.querySelector(".info__newsletter__container").classList.toggle("hidden");
+    blockScrollBody();
+  }
 }
 
 const addEventsToNewsletter = () => {
@@ -27,6 +49,7 @@ const addEventsToNewsletter = () => {
     e.preventDefault();
     e.stopPropagation();
     displayPopUpNewsletter();
+    saveInSession("session");
   }
   bgNewsletter.addEventListener("click", (e) => {
     e.stopPropagation()
@@ -46,6 +69,7 @@ const addEventsToNewsletter = () => {
       }
       postForm(dataNewsletter)
       closeNewsletter(e);
+      saveInSession("local");
     } else {
       console.error("Faltan datos de los requeridos");
     }
@@ -79,6 +103,7 @@ btnScroll.addEventListener("click", () => {
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
+  // IMPROVE Hay veces que se salta el númeor porque no da tiempo con el calculo por lo que no sale el pop up
   if (percentageScroll === 25) {
     displayPopUpNewsletter();
   }
