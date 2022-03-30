@@ -15,6 +15,7 @@ const postForm = (info) => {
     .then((response) => response.json())
     .then((json) => console.log(json));
 }
+// IMPROVE La manera de saber en donde hay que guardar el dato
 function saveInSession(type) {
   const item = "keepRecomendNewsletter"
   const value = false;
