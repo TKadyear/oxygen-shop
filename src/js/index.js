@@ -3,6 +3,8 @@ const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return RegeXEmail.test(email);
 }
+const isValidName = (name) => name.length >= 2 && name.length < 100
+
 const postForm = (info) => {
   fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
     method: 'POST',
@@ -61,18 +63,18 @@ const addEventsToNewsletter = () => {
   document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const inputEmail = document.querySelector("input[type=email].info__newsletter__input").value;
-    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
-    if (isValidEmail(inputEmail) && consentCheckbox) {
+    const inputEmail = document.querySelector("input[type=email].info__newsletter__input");
+    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox")
+    isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+    consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+    if (isValidEmail(inputEmail.value) && consentCheckbox.checked) {
       const dataNewsletter = {
-        email: inputEmail,
+        email: inputEmail.value,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
       }
       postForm(dataNewsletter)
       closeNewsletter(e);
       saveInSession("local");
-    } else {
-      console.error("Faltan datos de los requeridos");
     }
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
@@ -149,6 +151,28 @@ class Slider {
   }
 }
 const imagesSlider = new Slider(".slide__img", ".slide__btn")
+
+document.querySelector("#submit-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  let inputName = document.querySelector("input[type=text].form__input");
+  let inputEmail = document.querySelector("input[type=email].form__input");
+  let consentCheckbox = document.querySelector("input[type=checkbox].form__checkbox")
+  isValidName(inputName.value) ? inputName.classList.remove("form__input--invalid") : inputName.classList.add("form__input--invalid")
+  isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+  consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+  if (isValidEmail(inputEmail.value) && consentCheckbox.checked && isValidName(inputName.value)) {
+    const data = {
+      name: inputName.value,
+      email: inputEmail.value,
+      consent: consentCheckbox.checked
+    }
+    postForm(data)
+    inputName.value = "";
+    inputEmail.value = "";
+    consentCheckbox.checked = false;
+  }
+})
 
 window.addEventListener("DOMContentLoaded", () => {
   addEventsToNewsletter();
