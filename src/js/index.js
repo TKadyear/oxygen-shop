@@ -3,6 +3,8 @@ const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return RegeXEmail.test(email);
 }
+const isValidName = (name) => name.length >= 2 && name.length < 100
+
 const postForm = (info) => {
   fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
     method: 'POST',
@@ -156,7 +158,10 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
   let inputName = document.querySelector("input[type=text].form__input");
   let inputEmail = document.querySelector("input[type=email].form__input");
   let consentCheckbox = document.querySelector("input[type=checkbox].form__checkbox")
-  if (isValidEmail(inputEmail.value) && consentCheckbox.checked && inputName.value) {
+  isValidName(inputName.value) ? inputName.classList.remove("form__input--invalid") : inputName.classList.add("form__input--invalid")
+  isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+  consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+  if (isValidEmail(inputEmail.value) && consentCheckbox.checked && isValidName(inputName.value)) {
     const data = {
       name: inputName.value,
       email: inputEmail.value,
@@ -166,10 +171,9 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
     inputName.value = "";
     inputEmail.value = "";
     consentCheckbox.checked = false;
-  } else {
-    console.error("Algun dato esta mal")
   }
 })
+
 window.addEventListener("DOMContentLoaded", () => {
   addEventsToNewsletter();
   setTimeout(displayPopUpNewsletter, 5000);

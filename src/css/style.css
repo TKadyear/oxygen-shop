@@ -535,6 +535,9 @@ button{
   flex-direction: column;
   gap:2.5rem;
 }
+.form__input:focus:invalid,.form__input--invalid {
+  border-color: var(--secundary)!important;
+}
 .form > .form__btn{
   width: 60%;
   max-width: 225px;
