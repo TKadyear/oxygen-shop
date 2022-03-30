@@ -150,6 +150,26 @@ class Slider {
 }
 const imagesSlider = new Slider(".slide__img", ".slide__btn")
 
+document.querySelector("#submit-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  let inputName = document.querySelector("input[type=text].form__input");
+  let inputEmail = document.querySelector("input[type=email].form__input");
+  let consentCheckbox = document.querySelector("input[type=checkbox].form__checkbox")
+  if (isValidEmail(inputEmail.value) && consentCheckbox.checked && inputName.value) {
+    const data = {
+      name: inputName.value,
+      email: inputEmail.value,
+      consent: consentCheckbox.checked
+    }
+    postForm(data)
+    inputName.value = "";
+    inputEmail.value = "";
+    consentCheckbox.checked = false;
+  } else {
+    console.error("Algun dato esta mal")
+  }
+})
 window.addEventListener("DOMContentLoaded", () => {
   addEventsToNewsletter();
   setTimeout(displayPopUpNewsletter, 5000);
