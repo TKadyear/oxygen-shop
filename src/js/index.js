@@ -3,6 +3,19 @@ const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return RegeXEmail.test(email);
 }
+const postForm = (info) => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
+    method: 'POST',
+    body: JSON.stringify(info
+    ),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
+
 const displayPopUpNewsletter = () => {
   document.querySelector(".info__newsletter__container").classList.toggle("hidden");
   blockScrollBody();
@@ -31,6 +44,7 @@ const addEventsToNewsletter = () => {
         email: inputEmail,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
       }
+      postForm(dataNewsletter)
       closeNewsletter(e);
     } else {
       console.error("Faltan datos de los requeridos");
