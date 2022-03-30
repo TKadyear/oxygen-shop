@@ -77,7 +77,6 @@ const createPopUpNewsletter = () => {
   }
 }
 
-
 const scrollToHeader = () => {
   const currentScroll = window.scrollY
   if (currentScroll > 0) {
@@ -98,6 +97,48 @@ window.addEventListener("scroll", () => {
     createPopUpNewsletter();
   }
 })
+
+
+class Slider {
+  constructor(identifier, selectorbtn) {
+    this.listImg = document.querySelectorAll(identifier);
+    this.listBtnImg = document.querySelectorAll(selectorbtn);
+    this.count = 0;
+  }
+  counting() {
+    return this.count = (this.count < (this.listImg.length - 1)) ? ++this.count : 0;
+  }
+  changing(itemToChange, classActive) {
+    itemToChange.forEach((img, index) => {
+      if (img.classList.contains(classActive)) {
+        img.classList.remove(classActive);
+      }
+      if (index === this.count) {
+        img.classList.add(classActive);
+      }
+      return img;
+    })
+  }
+  slide() {
+    this.changing(this.listImg, "slide__img--active");
+    this.changing(this.listBtnImg, "slide__btn--active");
+  }
+  changeSlides() {
+    this.counting();
+    this.slide();
+  }
+  listenerBtn() {
+    this.listBtnImg.forEach((btn, index) => btn.addEventListener("click", () => {
+      this.count = index;
+      this.slide();
+    })
+    )
+  }
+}
+const imagesSlider = new Slider(".slide__img", ".slide__btn")
+
 window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(createPopUpNewsletter, 5000)
+  // setTimeout(createPopUpNewsletter, 5000)
+  imagesSlider.listenerBtn();
+  setInterval(() => imagesSlider.changeSlides(), 3000)
 })

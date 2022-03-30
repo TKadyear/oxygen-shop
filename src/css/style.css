@@ -343,8 +343,51 @@ button{
   position: absolute;
   border-radius: 50%;
 }
+.section__slide{
+  margin: 6.5rem auto;
+}
+.slide__viewer{
+  position: relative;
+  background:white;
+  max-width: 750px;
+  width:100%;
+  height: 450px;
+  margin: 0 auto;
+}
+.slide__img{
+  position: absolute;
+  object-fit: contain;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  transition: 400ms ease-in;
+}
+.slide__img--active{
+  opacity: 1;
+}
+.slide__btn__container{
+  width:max-content;
+  margin:1rem auto;
+  display:flex;
+  flex-direction:row;
+  gap: 1rem;
+}
+.slide__btn{
+  padding: 0;
+  width:12px;
+  height:12px;
+  background: var(--grey);
+  border-radius: 50%;
+  cursor:pointer;
+  transition: 200ms;
+}
+.slide__btn:hover,.slide__btn--active{
+  background: var(--primary);
+}
+
 .pricing{
-  padding: 6.5rem 1.75rem;
+  padding:  1rem  1.75rem 2rem;
+  margin: 6.5rem auto 5rem;
 }
 .pricing h4 {
   margin-top: 0;
