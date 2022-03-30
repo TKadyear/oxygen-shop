@@ -1,20 +1,61 @@
-const blockScrollBody = (block) => block ? document.body.classList.add("block__scroll") : document.body.classList.remove("block__scroll")
+const blockScrollBody = () => document.body.classList.toggle("overflow-hidden");
 const isValidEmail = (email) => {
-  const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return RegeXEmail.test(email)
+  const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return RegeXEmail.test(email);
 }
+const postForm = (info) => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
+    method: 'POST',
+    body: JSON.stringify(info
+    ),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
+// IMPROVE La manera de saber en donde hay que guardar el dato
+function saveInSession(type) {
+  const item = "keepRecomendNewsletter"
+  const value = false;
+  switch (type) {
+    case "local":
+      localStorage.setItem(item, JSON.stringify(value))
+      break;
+    case "session":
+      sessionStorage.setItem(item, JSON.stringify(value))
+      break;
+  }
+}
+// IMPROVE El nombre de esta función es más bien lioso con respecto a lo que devuelve
+const hasBeenDisplayNewsletter = () => {
+  const createNewsletter = localStorage.getItem("keepRecomendNewsletter") || sessionStorage.getItem("keepRecomendNewsletter")
+  if (createNewsletter != null) {
+    return false;
+  }
+  return true;
+}
+
+const displayPopUpNewsletter = () => {
+  if (hasBeenDisplayNewsletter()) {
+    document.querySelector(".info__newsletter__container").classList.toggle("hidden");
+    blockScrollBody();
+  }
+}
+
 const addEventsToNewsletter = () => {
   const bgNewsletter = document.querySelector("#newsletter__bg")
   const closeNewsletter = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    blockScrollBody(false);
-    bgNewsletter.remove()
+    displayPopUpNewsletter();
+    saveInSession("session");
   }
   bgNewsletter.addEventListener("click", (e) => {
     e.stopPropagation()
     if (e.target === bgNewsletter) {
-      closeNewsletter(e)
+      closeNewsletter(e);
     }
   })
   document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
@@ -27,7 +68,9 @@ const addEventsToNewsletter = () => {
         email: inputEmail,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
       }
+      postForm(dataNewsletter)
       closeNewsletter(e);
+      saveInSession("local");
     } else {
       console.error("Faltan datos de los requeridos");
     }
@@ -40,61 +83,30 @@ const addEventsToNewsletter = () => {
   })
 }
 
-const createPopUpNewsletter = () => {
-  if (!document.querySelector(".info__newsletter__container")) {
-    const template = /*html */`
-    <div id="newsletter__bg" class="info__newsletter__container">
-      <div class="info__newsletter">
-        <div class="info__newsletter__btn__close">
-          <svg width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.492 12.501 12.494 1.5m0 11.002L1.492 1.5" stroke="#07ACE6" stroke-width="2"/>
-          </svg>
-        </div>
-        <h6 class="info__newsletter_h6">Don't miss any updates</h6>
-        <p class="info__newsletter_p">Get the lastest content and best deals in your inbox every day!</p>
-        <form>
-          <label class="info__newsletter__label">Email<input type="email" class="info__newsletter__input" name="newsletter__email" required></label>
-          <label class="info__newsletter__label info__newsletter__label--checkbox" id="data-protection" for="data-protection">
-            <input class="info__newsletter__checkbox" type="checkbox" name="data-protection" required>
-            <p class="info__newsletter__label__p"> I hereby give consent for my personal data included in my application to be processed for the purposes of
-            the
-            recruitment process under the European Parliament’s and Council of the European Union Regulation on the
-            Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
-            free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
-            </p>
-        </label>
-        <div class="info__newsletter__form__container__btn">
-        <button  class="newsletter__btn--exit">I'm not interesed</button>
-        <button  class="newsletter__btn btn-primary">Send</button>
-        </div>
-        </form>
-      </div>
-    </div>
-    `
-    blockScrollBody(true);
-    document.body.insertAdjacentHTML("beforeend", template)
-    addEventsToNewsletter();
-  }
-}
-
 const scrollToHeader = () => {
-  const currentScroll = window.scrollY
+  const currentScroll = window.scrollY;
   if (currentScroll > 0) {
     window.scrollTo(0, currentScroll - (currentScroll / 25));
     window.requestAnimationFrame(scrollToHeader);
   }
 }
-
+document.body.addEventListener("keyup", (e) => {
+  const popUp = document.querySelector(".info__newsletter__container");
+  if (!popUp.classList.contains("hidden") && e.key == "Escape") {
+    displayPopUpNewsletter();
+  }
+})
 const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
-  setTimeout(() => scrollToHeader(), 200)
+  setTimeout(() => scrollToHeader(), 200);
 })
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
+  // IMPROVE Hay veces que se salta el númeor porque no da tiempo con el calculo por lo que no sale el pop up
   if (percentageScroll === 25) {
-    createPopUpNewsletter();
+    displayPopUpNewsletter();
   }
 })
 
@@ -138,7 +150,8 @@ class Slider {
 const imagesSlider = new Slider(".slide__img", ".slide__btn")
 
 window.addEventListener("DOMContentLoaded", () => {
-  // setTimeout(createPopUpNewsletter, 5000)
+  addEventsToNewsletter();
+  setTimeout(displayPopUpNewsletter, 5000);
   imagesSlider.listenerBtn();
-  setInterval(() => imagesSlider.changeSlides(), 3000)
+  setInterval(() => imagesSlider.changeSlides(), 3000);
 })
