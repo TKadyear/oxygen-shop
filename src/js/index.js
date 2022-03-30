@@ -69,7 +69,7 @@ const addEventsToNewsletter = () => {
     consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
     if (isValidEmail(inputEmail.value) && consentCheckbox.checked) {
       const dataNewsletter = {
-        email: inputEmail,
+        email: inputEmail.value,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
       }
       postForm(dataNewsletter)
