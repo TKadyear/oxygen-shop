@@ -343,6 +343,9 @@ button{
   position: absolute;
   border-radius: 50%;
 }
+.section__slide{
+  margin: 6.5rem auto;
+}
 .slide__viewer{
   background:white;
   max-width: 750px;
@@ -355,6 +358,7 @@ button{
   object-fit: contain;
   width: 100%;
   height: 100%;
+/* TODO  Transition para el slider*/
 }
 .slide__img--active{
   display: block;
@@ -366,21 +370,22 @@ button{
   flex-direction:row;
   gap: 1rem;
 }
-.slide__btn__container > .slide__btn{
+.slide__btn{
   padding: 0;
   width:12px;
   height:12px;
-  background: grey;
+  background: var(--grey);
   border-radius: 50%;
   cursor:pointer;
   transition: 200ms;
 }
 .slide__btn:hover,.slide__btn--active{
-  background: darkblue;
+  background: var(--primary);
 }
 
 .pricing{
-  padding: 6.5rem 1.75rem;
+  padding:  1rem  1.75rem 2rem;
+  margin: 6.5rem auto 5rem;
 }
 .pricing h4 {
   margin-top: 0;
