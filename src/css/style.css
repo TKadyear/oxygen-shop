@@ -38,22 +38,22 @@ button{
   box-shadow:5px 10px 14px  var(--shadow-primary);
   transition: 0.5s;
 }
-.btn-primary:hover{
-  background-color: var(--special);
-}
 .btn-secundary{
   background-color: var(--secundary);
   transition: 0.5s;
-}
-.btn-secundary:hover{
-  background-color: var(--special);
 }
 .btn-special{
   background-color: var(--special);
   transition: 0.5s;
 }
 .btn-primary:hover{
-  background-color: var(--primary);
+  background-color: #3a9fc7;
+}
+.btn-secundary:hover{
+  background-color: #c5415e;
+}
+.btn-special:hover{
+  background-color: #4fc09c;
 }
 .btn__scroll_up{
   box-sizing: content-box;
