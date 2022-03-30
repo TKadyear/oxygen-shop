@@ -96,7 +96,7 @@ button{
 }
 .info__newsletter {
   background: var(--white);
-  box-shadow: 5px 10px 27px var(--shadow-primary);
+  box-shadow: 5px 10px 27px var(--shadow-grey);
   position: fixed;
   padding: 2rem;
   min-width: 200px;
