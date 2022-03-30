@@ -63,9 +63,11 @@ const addEventsToNewsletter = () => {
   document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const inputEmail = document.querySelector("input[type=email].info__newsletter__input").value;
-    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
-    if (isValidEmail(inputEmail) && consentCheckbox) {
+    const inputEmail = document.querySelector("input[type=email].info__newsletter__input");
+    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox")
+    isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+    consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+    if (isValidEmail(inputEmail.value) && consentCheckbox.checked) {
       const dataNewsletter = {
         email: inputEmail,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
@@ -73,8 +75,6 @@ const addEventsToNewsletter = () => {
       postForm(dataNewsletter)
       closeNewsletter(e);
       saveInSession("local");
-    } else {
-      console.error("Faltan datos de los requeridos");
     }
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
