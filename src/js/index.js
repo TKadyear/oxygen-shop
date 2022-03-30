@@ -77,6 +77,7 @@ const addEventsToNewsletter = () => {
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
     closeNewsletter(e);
+    saveInSession("local");
   })
   document.querySelector(".info__newsletter__btn__close").addEventListener("click", (e) => {
     closeNewsletter(e);
