@@ -347,6 +347,7 @@ button{
   margin: 6.5rem auto;
 }
 .slide__viewer{
+  position: relative;
   background:white;
   max-width: 750px;
   width:100%;
@@ -354,14 +355,15 @@ button{
   margin: 0 auto;
 }
 .slide__img{
-  display: none;
+  position: absolute;
   object-fit: contain;
-  width: 100%;
+  opacity: 0;
   height: 100%;
-/* TODO  Transition para el slider*/
+  width: 100%;
+  transition: 400ms ease-in;
 }
 .slide__img--active{
-  display: block;
+  opacity: 1;
 }
 .slide__btn__container{
   width:max-content;
