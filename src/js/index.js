@@ -77,7 +77,6 @@ const createPopUpNewsletter = () => {
   }
 }
 
-
 const scrollToHeader = () => {
   const currentScroll = window.scrollY
   if (currentScroll > 0) {
@@ -98,6 +97,16 @@ window.addEventListener("scroll", () => {
     createPopUpNewsletter();
   }
 })
+
+class slider {
+  constructor(id) {
+    this.id = id;
+    this.element = document.querySelector(`#${this.id}`);
+    this.children = this.element.children;
+    this.count = 0;
+  }
+
+}
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(createPopUpNewsletter, 5000)
 })
