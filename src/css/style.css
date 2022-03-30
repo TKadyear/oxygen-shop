@@ -19,10 +19,12 @@ body{
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
   font-family: 'Raleway', sans-serif;
 }
-.block__scroll{
+.overflow-hidden{
   overflow-y: hidden;
 }
-
+.hidden{
+  display: none;
+}
 button{
   cursor:pointer;
   padding:1rem 3rem;
