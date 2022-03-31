@@ -88,6 +88,7 @@ button{
 }
 .info__newsletter__container {
   background: var(--shadow-grey);
+  transition: 100ms;
   width: 100%;
   height: 100%;
   position: fixed;

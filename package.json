@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "rm -rf dist && vite build",
     "preview": "vite preview",
-    "test": "jest",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
