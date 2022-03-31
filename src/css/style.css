@@ -19,10 +19,12 @@ body{
   /*TODO  Poner las fuentes en local y cambiarlo de aqui, esto es temporal para dar estilo general*/
   font-family: 'Raleway', sans-serif;
 }
-.block__scroll{
+.overflow-hidden{
   overflow-y: hidden;
 }
-
+.hidden{
+  display: none;
+}
 button{
   cursor:pointer;
   padding:1rem 3rem;
@@ -36,22 +38,22 @@ button{
   box-shadow:5px 10px 14px  var(--shadow-primary);
   transition: 0.5s;
 }
-.btn-primary:hover{
-  background-color: var(--special);
-}
 .btn-secundary{
   background-color: var(--secundary);
   transition: 0.5s;
-}
-.btn-secundary:hover{
-  background-color: var(--special);
 }
 .btn-special{
   background-color: var(--special);
   transition: 0.5s;
 }
 .btn-primary:hover{
-  background-color: var(--primary);
+  background-color: #3a9fc7;
+}
+.btn-secundary:hover{
+  background-color: #c5415e;
+}
+.btn-special:hover{
+  background-color: #4fc09c;
 }
 .btn__scroll_up{
   box-sizing: content-box;
@@ -94,7 +96,7 @@ button{
 }
 .info__newsletter {
   background: var(--white);
-  box-shadow: 5px 10px 27px var(--shadow-primary);
+  box-shadow: 5px 10px 27px var(--shadow-grey);
   position: fixed;
   padding: 2rem;
   min-width: 200px;
@@ -120,7 +122,7 @@ button{
 }
 .percentage-scroller{
   height: 4px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--primary) 25%, var(--special) 100%);
   position: fixed;
   z-index: 2;
   transition: 200ms;
@@ -171,6 +173,7 @@ button{
   padding:0;
 }
 .nav__menu__a {
+  position: relative;
   color:  #A5A5A5;
   letter-spacing: 3.28px;
   font-size: 11px;
@@ -178,6 +181,20 @@ button{
   text-decoration:none ;
   text-transform: uppercase;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: 200ms;
+}
+.nav__menu__a:hover{
+  color:  #2b2b2b;
+}
+.nav__menu__a:hover::after{
+  position: absolute;
+  content:"";
+  color:  #2b2b2b;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  bottom: -35px;
+  background-color: var(--primary);
 }
 .nav__menu{
   display: none;
@@ -214,7 +231,6 @@ button{
   padding: 2rem ;
   text-align: center;
 }
-/* IMPROVE Hay que mejorar la colocación de estos elementos ya que esta con margenes */
 .header__info__p{
   margin-top:0;
   margin-bottom: 51px ;
@@ -343,8 +359,51 @@ button{
   position: absolute;
   border-radius: 50%;
 }
+.section__slide{
+  margin: 6.5rem auto;
+}
+.slide__viewer{
+  position: relative;
+  background:white;
+  max-width: 750px;
+  width:100%;
+  height: 450px;
+  margin: 0 auto;
+}
+.slide__img{
+  position: absolute;
+  object-fit: contain;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  transition: 400ms ease-in;
+}
+.slide__img--active{
+  opacity: 1;
+}
+.slide__btn__container{
+  width:max-content;
+  margin:1rem auto;
+  display:flex;
+  flex-direction:row;
+  gap: 1rem;
+}
+.slide__btn{
+  padding: 0;
+  width:12px;
+  height:12px;
+  background: var(--grey);
+  border-radius: 50%;
+  cursor:pointer;
+  transition: 200ms;
+}
+.slide__btn:hover,.slide__btn--active{
+  background: var(--primary);
+}
+
 .pricing{
-  padding: 6.5rem 1.75rem;
+  padding:  1rem  1.75rem 2rem;
+  margin: 6.5rem auto 5rem;
 }
 .pricing h4 {
   margin-top: 0;
@@ -352,8 +411,16 @@ button{
   font-weight: 400;
   text-align: center;
 }
+.pricing__currency{
+  text-align: end;
+}
+.pricing__currency__select{
+  padding: 0.125rem 0.75em;
+}
+.pricing__currency__select__option{
+}
 .pricing__container{
-  margin:0 auto;
+  margin:1rem auto;
   max-width: 422px;
   display: flex;
   flex-direction: column;
@@ -373,7 +440,6 @@ button{
   transition: 0.4s;
 }
 .pricing__container__price__p {
-  /* IMPROVE Hay que mirar alguna manera de poder igualar bien los tamaños de los textos  */
   height: 105px;
   width: 40%;
   display: flex;
@@ -404,7 +470,6 @@ button{
 .pricing .premium{
   border-color: var(--special);
 }
-/* IMPROVE hay que cambiar estas etiquetas */
 .pricing mark{
   background: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -489,6 +554,9 @@ button{
   display: flex;
   flex-direction: column;
   gap:2.5rem;
+}
+.form__input:focus:invalid,.form__input--invalid {
+  border-color: var(--secundary)!important;
 }
 .form > .form__btn{
   width: 60%;
@@ -603,7 +671,6 @@ button{
     background-image: url(/assets/img/bg-header.png);
     background-size: contain;
   }
-  /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
   #hamburger{
     display: none;
   }

@@ -106,8 +106,30 @@
         </div>
       </div>
     </section>
+    <section class="section__slide">
+      <div id="slider" class="slide__viewer">
+        <img src="/img/laptop-shop.jpg" alt="Foto de una persona consultando una página web en un portátil "
+          class="slide__img slide__img--active">
+        <img src="/img/phone-shop.jpg" alt="Foto de un movil en una página de venta online" class="slide__img">
+        <img src="/img/credit-card-shop.jpeg" alt="Persona comprando con su tarjeta de credito" class="slide__img">
+        <img src="/img/tablet-shop.jpg" alt="Consulta a un ecommece desde una tablet" class="slide__img">
+      </div>
+      <div class="slide__btn__container">
+        <button class="slide__btn slide__btn--active"></button>
+        <button class="slide__btn"></button>
+        <button class="slide__btn"></button>
+        <button class="slide__btn"></button>
+      </div>
+    </section>
     <section id="prices" class="pricing">
       <h4>Pricing</h4>
+      <div class="pricing__currency">
+        <select name="currency__select" class="pricing__currency__select">
+          <option value="gbp">GBP - ₤</option>
+          <option value="eur">EUR - €</option>
+          <option value="usd" selected>USD - $</option>
+        </select>
+      </div>
       <div class="pricing__container">
         <div class="pricing__container__price pricing__container__price--color-secundary basic">
           <p class="pricing__container__price__p">
@@ -160,8 +182,10 @@
           <p class="contact__p">Leave your email address or call us!</p>
         </div>
         <div class="contact__info">
-          <p class="contact__info__p"><img src="./assets/img/icons/mail.svg" alt=" ">info@bestshop.xyz</p>
-          <p class="contact__info__p"><img src="./assets/img/icons/phone.svg" alt=" ">123 456 789</p>
+          <p class="contact__info__p"><img src="./assets/img/icons/mail.svg"
+              alt="Icono de correo">tamarakadyear@gmail.com</p>
+          <p class="contact__info__p"><img src="./assets/img/icons/phone.svg" alt="Icono de teléfono">+34 666 94 69 18
+          </p>
         </div>
       </div>
       <form class="form">
@@ -183,9 +207,40 @@
             free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
           </p>
         </label>
-        <button class="form__btn btn-primary">Send</button>
+        <button id="submit-btn" class="form__btn btn-primary">Send</button>
       </form>
     </section>
+    <div id="newsletter__bg" class="info__newsletter__container hidden">
+      <div class="info__newsletter">
+        <div class="info__newsletter__btn__close">
+          <svg width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.492 12.501 12.494 1.5m0 11.002L1.492 1.5" stroke="#07ACE6" stroke-width="2" />
+          </svg>
+        </div>
+        <h6 class="info__newsletter_h6">Don't miss any updates</h6>
+        <p class="info__newsletter_p">Get the lastest content and best deals in your inbox every day!</p>
+        <form>
+          <label class="info__newsletter__label">Email<input type="email" class="info__newsletter__input"
+              name="newsletter__email" required></label>
+          <label class="info__newsletter__label info__newsletter__label--checkbox" id="data-protection"
+            for="data-protection">
+            <input class="info__newsletter__checkbox" type="checkbox" name="data-protection" required>
+            <p class="info__newsletter__label__p"> I hereby give consent for my personal data included in my application
+              to be processed for the purposes of
+              the
+              recruitment process under the European Parliament’s and Council of the European Union Regulation on the
+              Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on
+              the
+              free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
+            </p>
+          </label>
+          <div class="info__newsletter__form__container__btn">
+            <button class="newsletter__btn--exit">I'm not interested</button>
+            <button class="newsletter__btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <footer class="footer">
     <div class="footer__container">

@@ -1,103 +1,257 @@
-const blockScrollBody = (block) => block ? document.body.classList.add("block__scroll") : document.body.classList.remove("block__scroll")
-const isValidEmail = (email) => {
-  const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return RegeXEmail.test(email)
+let conversionRates = {}
+// IMPROVE quizás con una clase iria mejor.
+let basePrice = [];
+let pricing = {}
+// IMPROVE Se podría mirar como hacer una clase padre para los cambios de conversiones ya que no dependen de los "hijos"
+class Price {
+  constructor(rawData) {
+    this.value = this.whichValue(rawData);
+    this.currency = this.whichCurrency(rawData);
+  }
+  whichValue(rawValue) {
+    return Number(rawValue.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
+  }
+  whichSymbol(type) {
+    // IMPROVE Hay que mirar una manera de mantenerlo sin repetición
+    const currencyToSymbol = {
+      "eur": "€",
+      "gbp": "₤",
+      "usd": "$"
+    }
+    return currencyToSymbol[type];
+  }
+  whichCurrency(rawValue) {
+    const type = rawValue.replace(/\d/g, "")
+    const symbolCurrency = {
+      "€": "eur",
+      "₤": "gbp",
+      "$": "usd"
+    }
+    return symbolCurrency[type];
+  }
+
+  conversion(currencyToChange) {
+    const conversion = currencyToChange === this.currency ? this.value : this.value * conversionRates[currencyToChange]
+    return conversion;
+  }
+  exchangeToString(currencyChange) {
+    const changedCurrency = Math.round(this.conversion(currencyChange));
+    return currencyChange === this.currency ? "$" + changedCurrency : changedCurrency + this.whichSymbol(currencyChange)
+  }
 }
+// TODO Preguntar a John sobre tema de performance para Javascript sobre crear una clase temporalmente
+class CardPricing {
+  constructor(selector) {
+    this.valuesHTML = document.querySelectorAll(selector);
+    this.initialValue = this.takeInitialValue();
+  }
+  takeInitialValue() {
+    let allPrices = [...this.valuesHTML].map(value => new Price(value.textContent));
+    return allPrices;
+  }
+  changePricesTo(currency) {
+    this.valuesHTML.forEach((priceHTML, index) => {
+      priceHTML.textContent = this.initialValue[index].exchangeToString(currency);
+    })
+  }
+}
+const blockScrollBody = () => document.body.classList.toggle("overflow-hidden");
+const isValidEmail = (email) => {
+  const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return RegeXEmail.test(email);
+}
+const isValidName = (name) => name.length >= 2 && name.length < 100
+
+const postForm = (info) => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
+    method: 'POST',
+    body: JSON.stringify(info
+    ),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
+// IMPROVE La manera de saber en donde hay que guardar el dato
+function saveInSession(type) { //Parametro persistent  y que sea un true o false
+  const item = "keepRecomendNewsletter"
+  const value = false;
+  switch (type) {
+    case "local":
+      localStorage.setItem(item, JSON.stringify(value))
+      break;
+    case "session":
+      sessionStorage.setItem(item, JSON.stringify(value))
+      break;
+  }
+}
+// IMPROVE El nombre de esta función es más bien lioso con respecto a lo que devuelve
+const hasBeenDisplayNewsletter = () => {
+  const createNewsletter = localStorage.getItem("keepRecomendNewsletter") || sessionStorage.getItem("keepRecomendNewsletter")
+  if (createNewsletter != null) {
+    return false;
+  }
+  return true;
+}
+
+const displayPopUpNewsletter = () => {
+  if (hasBeenDisplayNewsletter()) {
+    document.querySelector(".info__newsletter__container").classList.toggle("hidden");
+    blockScrollBody();
+  }
+}
+
 const addEventsToNewsletter = () => {
   const bgNewsletter = document.querySelector("#newsletter__bg")
   const closeNewsletter = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    blockScrollBody(false);
-    bgNewsletter.remove()
+    displayPopUpNewsletter();
+    saveInSession("session");
   }
   bgNewsletter.addEventListener("click", (e) => {
     e.stopPropagation()
     if (e.target === bgNewsletter) {
-      closeNewsletter(e)
+      closeNewsletter(e);
     }
   })
   document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const inputEmail = document.querySelector("input[type=email].info__newsletter__input").value;
-    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
-    if (isValidEmail(inputEmail) && consentCheckbox) {
+    const inputEmail = document.querySelector("input[type=email].info__newsletter__input");
+    const consentCheckbox = document.querySelector("input[type=checkbox].info__newsletter__checkbox")
+    isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+    consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+    if (isValidEmail(inputEmail.value) && consentCheckbox.checked) {
       const dataNewsletter = {
-        email: inputEmail,
+        email: inputEmail.value,
         consent: document.querySelector("input[type=checkbox].info__newsletter__checkbox").checked
       }
+      postForm(dataNewsletter)
       closeNewsletter(e);
-    } else {
-      console.error("Faltan datos de los requeridos");
+      saveInSession("local");
     }
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
     closeNewsletter(e);
+    saveInSession("local");
   })
   document.querySelector(".info__newsletter__btn__close").addEventListener("click", (e) => {
     closeNewsletter(e);
   })
 }
 
-const createPopUpNewsletter = () => {
-  if (!document.querySelector(".info__newsletter__container")) {
-    const template = /*html */`
-    <div id="newsletter__bg" class="info__newsletter__container">
-      <div class="info__newsletter">
-        <div class="info__newsletter__btn__close">
-          <svg width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.492 12.501 12.494 1.5m0 11.002L1.492 1.5" stroke="#07ACE6" stroke-width="2"/>
-          </svg>
-        </div>
-        <h6 class="info__newsletter_h6">Don't miss any updates</h6>
-        <p class="info__newsletter_p">Get the lastest content and best deals in your inbox every day!</p>
-        <form>
-          <label class="info__newsletter__label">Email<input type="email" class="info__newsletter__input" name="newsletter__email" required></label>
-          <label class="info__newsletter__label info__newsletter__label--checkbox" id="data-protection" for="data-protection">
-            <input class="info__newsletter__checkbox" type="checkbox" name="data-protection" required>
-            <p class="info__newsletter__label__p"> I hereby give consent for my personal data included in my application to be processed for the purposes of
-            the
-            recruitment process under the European Parliament’s and Council of the European Union Regulation on the
-            Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the
-            free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)
-            </p>
-        </label>
-        <div class="info__newsletter__form__container__btn">
-        <button  class="newsletter__btn--exit">I'm not interesed</button>
-        <button  class="newsletter__btn btn-primary">Send</button>
-        </div>
-        </form>
-      </div>
-    </div>
-    `
-    blockScrollBody(true);
-    document.body.insertAdjacentHTML("beforeend", template)
-    addEventsToNewsletter();
-  }
-}
-
-
 const scrollToHeader = () => {
-  const currentScroll = window.scrollY
+  const currentScroll = window.scrollY;
   if (currentScroll > 0) {
     window.scrollTo(0, currentScroll - (currentScroll / 25));
     window.requestAnimationFrame(scrollToHeader);
   }
 }
-
+document.body.addEventListener("keyup", (e) => {
+  const popUp = document.querySelector(".info__newsletter__container");
+  if (!popUp.classList.contains("hidden") && e.key == "Escape") {
+    displayPopUpNewsletter();
+  }
+})
 const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
-  setTimeout(() => scrollToHeader(), 200)
+  setTimeout(() => scrollToHeader(), 200);
 })
+const selectCurrency = document.querySelector(".pricing__currency__select")
+selectCurrency.addEventListener("change", () => {
+  const currency = selectCurrency.value;
+  pricing.changePricesTo(currency);
+})
+function chargeData() {
+  fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
+    .then(response => response.json())
+    .then(data => {
+      const currencyPetition = "usd"
+      const exchangeCurrency = data[currencyPetition];
+      const conversionCurrencies = ["eur", "gbp"];
+      conversionCurrencies.forEach(currency => {
+        conversionRates[currency] = exchangeCurrency[currency];
+      })
+    })
+}
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
-  if (percentageScroll === 25) {
-    createPopUpNewsletter();
+  if (percentageScroll < 25) {
+    displayPopUpNewsletter();
   }
 })
+
+
+class Slider {
+  constructor(identifier, selectorbtn) {
+    this.listImg = document.querySelectorAll(identifier);
+    this.listBtnImg = document.querySelectorAll(selectorbtn);
+    this.count = 0;
+  }
+  counting() {
+    return this.count = (this.count < (this.listImg.length - 1)) ? ++this.count : 0;
+  }
+  changing(itemToChange, classActive) {
+    itemToChange.forEach((img, index) => {
+      if (img.classList.contains(classActive)) {
+        img.classList.remove(classActive);
+      }
+      if (index === this.count) {
+        img.classList.add(classActive);
+      }
+      return img;
+    })
+  }
+  slide() {
+    this.changing(this.listImg, "slide__img--active");
+    this.changing(this.listBtnImg, "slide__btn--active");
+  }
+  changeSlides() {
+    this.counting();
+    this.slide();
+  }
+  listenerBtn() {
+    this.listBtnImg.forEach((btn, index) => btn.addEventListener("click", () => {
+      this.count = index;
+      this.slide();
+    })
+    )
+  }
+}
+const imagesSlider = new Slider(".slide__img", ".slide__btn")
+
+document.querySelector("#submit-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  let inputName = document.querySelector("input[type=text].form__input");
+  let inputEmail = document.querySelector("input[type=email].form__input");
+  let consentCheckbox = document.querySelector("input[type=checkbox].form__checkbox")
+  isValidName(inputName.value) ? inputName.classList.remove("form__input--invalid") : inputName.classList.add("form__input--invalid")
+  isValidEmail(inputEmail.value) ? inputEmail.classList.remove("form__input--invalid") : inputEmail.classList.add("form__input--invalid")
+  consentCheckbox.checked ? consentCheckbox.classList.remove("form__input--invalid") : consentCheckbox.classList.add("form__input--invalid")
+  if (isValidEmail(inputEmail.value) && consentCheckbox.checked && isValidName(inputName.value)) {
+    const data = {
+      name: inputName.value,
+      email: inputEmail.value,
+      consent: consentCheckbox.checked
+    }
+    postForm(data)
+    inputName.value = "";
+    inputEmail.value = "";
+    consentCheckbox.checked = false;
+  }
+})
+
 window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(createPopUpNewsletter, 5000)
+  chargeData();
+  pricing = new CardPricing(".pricing__container__price__p mark")
+  addEventsToNewsletter();
+  setTimeout(displayPopUpNewsletter, 5000);
+  imagesSlider.listenerBtn();
+  setInterval(() => imagesSlider.changeSlides(), 3000);
 })
