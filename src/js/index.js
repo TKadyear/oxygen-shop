@@ -253,7 +253,11 @@ window.addEventListener("DOMContentLoaded", () => {
   chargeData();
   pricing = new CardPricing(".pricing__container__price__p mark")
   addEventsToNewsletter();
-  setTimeout(displayPopUpNewsletter, 5000);
+  setTimeout(() => {
+    if (document.querySelector(".info__newsletter__container").classList.contains("hidden")) {
+      displayPopUpNewsletter();
+    }
+  }, 5000);
   imagesSlider.listenerBtn();
   setInterval(() => imagesSlider.changeSlides(), 3000);
 })
