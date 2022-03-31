@@ -150,12 +150,14 @@ const scrollToHeader = () => {
     window.requestAnimationFrame(scrollToHeader);
   }
 }
-document.body.addEventListener("keyup", (e) => {
-  const popUp = document.querySelector(".info__newsletter__container");
-  if (!popUp.classList.contains("hidden") && e.key == "Escape") {
-    displayPopUpNewsletter();
-  }
-})
+function windowESCnewsletter() {
+  document.body.addEventListener("keyup", (e) => {
+    const popUp = document.querySelector(".info__newsletter__container");
+    if (!popUp.classList.contains("hidden") && e.key == "Escape") {
+      displayPopUpNewsletter();
+    }
+  })
+}
 const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200);
@@ -181,7 +183,7 @@ function chargeData() {
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
-  if (percentageScroll < 25) {
+  if (percentageScroll === 25) {
     displayPopUpNewsletter();
   }
 })
