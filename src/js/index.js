@@ -1,3 +1,60 @@
+let conversionRates = {}
+// IMPROVE quizás con una clase iria mejor.
+let basePrice = [];
+let pricing = {}
+// IMPROVE Se podría mirar como hacer una clase padre para los cambios de conversiones ya que no dependen de los "hijos"
+class Price {
+  constructor(rawData) {
+    this.value = this.whichValue(rawData);
+    this.currency = this.whichCurrency(rawData);
+  }
+  whichValue(rawValue) {
+    return Number(rawValue.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
+  }
+  whichSymbol(type) {
+    // IMPROVE Hay que mirar una manera de mantenerlo sin repetición
+    const currencyToSymbol = {
+      "eur": "€",
+      "gbp": "₤",
+      "usd": "$"
+    }
+    return currencyToSymbol[type];
+  }
+  whichCurrency(rawValue) {
+    const type = rawValue.replace(/\d/g, "")
+    const symbolCurrency = {
+      "€": "eur",
+      "₤": "gbp",
+      "$": "usd"
+    }
+    return symbolCurrency[type];
+  }
+
+  conversion(currencyToChange) {
+    const conversion = currencyToChange === this.currency ? this.value : this.value * conversionRates[currencyToChange]
+    return conversion;
+  }
+  exchangeToString(currencyChange) {
+    const changedCurrency = Math.round(this.conversion(currencyChange));
+    return currencyChange === this.currency ? "$" + changedCurrency : changedCurrency + this.whichSymbol(currencyChange)
+  }
+}
+// TODO Preguntar a John sobre tema de performance para Javascript sobre crear una clase temporalmente
+class CardPricing {
+  constructor(selector) {
+    this.valuesHTML = document.querySelectorAll(selector);
+    this.initialValue = this.takeInitialValue();
+  }
+  takeInitialValue() {
+    let allPrices = [...this.valuesHTML].map(value => new Price(value.textContent));
+    return allPrices;
+  }
+  changePricesTo(currency) {
+    this.valuesHTML.forEach((priceHTML, index) => {
+      priceHTML.textContent = this.initialValue[index].exchangeToString(currency);
+    })
+  }
+}
 const blockScrollBody = () => document.body.classList.toggle("overflow-hidden");
 const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -18,7 +75,7 @@ const postForm = (info) => {
     .then((json) => console.log(json));
 }
 // IMPROVE La manera de saber en donde hay que guardar el dato
-function saveInSession(type) {
+function saveInSession(type) { //Parametro persistent  y que sea un true o false
   const item = "keepRecomendNewsletter"
   const value = false;
   switch (type) {
@@ -105,20 +162,26 @@ btnScroll.addEventListener("click", () => {
 })
 const selectCurrency = document.querySelector(".pricing__currency__select")
 selectCurrency.addEventListener("change", () => {
-  const prices = document.querySelectorAll(".pricing__container__price__p mark")
-  prices.forEach(price => {
-    const symbol = price.innerText.replace(/\d/, "");
-    const number = Number(price.innerText.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
-    console.log(symbol)
-    price.innerText = Math.round(((number * 100) * 0.910051) / 100) + "€"
-  })
+  const currency = selectCurrency.value;
+  pricing.changePricesTo(currency);
 })
+function chargeData() {
+  fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
+    .then(response => response.json())
+    .then(data => {
+      const currencyPetition = "usd"
+      const exchangeCurrency = data[currencyPetition];
+      const conversionCurrencies = ["eur", "gbp"];
+      conversionCurrencies.forEach(currency => {
+        conversionRates[currency] = exchangeCurrency[currency];
+      })
+    })
+}
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
-  // IMPROVE Hay veces que se salta el númeor porque no da tiempo con el calculo por lo que no sale el pop up
-  if (percentageScroll === 25) {
+  if (percentageScroll < 25) {
     displayPopUpNewsletter();
   }
 })
@@ -185,6 +248,8 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
 })
 
 window.addEventListener("DOMContentLoaded", () => {
+  chargeData();
+  pricing = new CardPricing(".pricing__container__price__p mark")
   addEventsToNewsletter();
   setTimeout(displayPopUpNewsletter, 5000);
   imagesSlider.listenerBtn();

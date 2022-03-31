@@ -216,7 +216,6 @@ button{
   padding: 2rem ;
   text-align: center;
 }
-/* IMPROVE Hay que mejorar la colocación de estos elementos ya que esta con margenes */
 .header__info__p{
   margin-top:0;
   margin-bottom: 51px ;
@@ -426,7 +425,6 @@ button{
   transition: 0.4s;
 }
 .pricing__container__price__p {
-  /* IMPROVE Hay que mirar alguna manera de poder igualar bien los tamaños de los textos  */
   height: 105px;
   width: 40%;
   display: flex;
@@ -457,7 +455,6 @@ button{
 .pricing .premium{
   border-color: var(--special);
 }
-/* IMPROVE hay que cambiar estas etiquetas */
 .pricing mark{
   background: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -659,7 +656,6 @@ button{
     background-image: url(/assets/img/bg-header.png);
     background-size: contain;
   }
-  /* TODO Añadir sr-only para que no lea el sr los elementos ocultos */
   #hamburger{
     display: none;
   }

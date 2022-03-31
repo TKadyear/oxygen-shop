@@ -76,3 +76,21 @@ conversionRate ={
   GBP : 0,759405
 }
 ```
+
+Para mejorar las conversiones, voy a trabajar con las monedas más pequeña.
+- 1 Libra son 100 peniques
+- 1 Dolar son 100 centavos
+- 1 Euro son 100 centimos
+
+Para no hacer muchas peticiones voy a hacer 3 peticiones totales con todos los datos que filtraré.
+
+Esto es un primer planteamiento
+```javascript
+const prices = document.querySelectorAll(".pricing__container__price__p mark")
+  prices.forEach(price => {
+    const symbol = price.innerText.replace(/\d/, "");
+    const number = Number(price.innerText.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
+    console.log(symbol)
+    price.innerText = Math.round(((number * 100) * 0.910051) / 100) + "€"
+  })
+  ```
