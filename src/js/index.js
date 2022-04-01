@@ -77,17 +77,10 @@ const postForm = (info) => {
     .then((json) => console.log(json));
 }
 // IMPROVE La manera de saber en donde hay que guardar el dato
-function saveInSession(type) { //Parametro persistent  y que sea un true o false
+function saveInSession(persistInBrowser) {
   const item = "keepRecomendNewsletter"
   const value = false;
-  switch (type) {
-    case "local":
-      localStorage.setItem(item, JSON.stringify(value))
-      break;
-    case "session":
-      sessionStorage.setItem(item, JSON.stringify(value))
-      break;
-  }
+  persistInBrowser ? localStorage.setItem(item, JSON.stringify(value)) : sessionStorage.setItem(item, JSON.stringify(value))
 }
 // IMPROVE El nombre de esta función es más bien lioso con respecto a lo que devuelve
 const hasBeenDisplayNewsletter = () => {
@@ -102,6 +95,7 @@ const displayPopUpNewsletter = () => {
   if (hasBeenDisplayNewsletter()) {
     document.querySelector(".info__newsletter__container").classList.toggle("hidden");
     blockScrollBody();
+    windowESCnewsletter();
   }
 }
 
@@ -111,7 +105,7 @@ const addEventsToNewsletter = () => {
     e.preventDefault();
     e.stopPropagation();
     displayPopUpNewsletter();
-    saveInSession("session");
+    saveInSession(false);
   }
   bgNewsletter.addEventListener("click", (e) => {
     e.stopPropagation()
@@ -133,12 +127,12 @@ const addEventsToNewsletter = () => {
       }
       postForm(dataNewsletter)
       closeNewsletter(e);
-      saveInSession("local");
+      saveInSession(true);
     }
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
     closeNewsletter(e);
-    saveInSession("local");
+    saveInSession(true);
   })
   document.querySelector(".info__newsletter__btn__close").addEventListener("click", (e) => {
     closeNewsletter(e);
@@ -157,6 +151,7 @@ function windowESCnewsletter() {
     const popUp = document.querySelector(".info__newsletter__container");
     if (!popUp.classList.contains("hidden") && e.key == "Escape") {
       displayPopUpNewsletter();
+      saveInSession(false);
     }
   })
 }
