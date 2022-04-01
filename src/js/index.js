@@ -37,6 +37,7 @@ class Price {
   exchangeToString(currencyChange) {
     const changedCurrency = Math.round(this.conversion(currencyChange));
     // IMPROVE No es del todo legible
+    // TODO hacer una clase que contenga en donde se debe posicionar el simbolo en base a cada tipo
     return currencyChange === "eur" ? changedCurrency + this.whichSymbol(currencyChange) : this.whichSymbol(currencyChange) + changedCurrency;
   }
 }
