@@ -36,7 +36,9 @@ class Price {
   }
   exchangeToString(currencyChange) {
     const changedCurrency = Math.round(this.conversion(currencyChange));
-    return currencyChange === this.currency ? "$" + changedCurrency : changedCurrency + this.whichSymbol(currencyChange)
+    // IMPROVE No es del todo legible
+    // TODO hacer una clase que contenga en donde se debe posicionar el simbolo en base a cada tipo
+    return currencyChange === "eur" ? changedCurrency + this.whichSymbol(currencyChange) : this.whichSymbol(currencyChange) + changedCurrency;
   }
 }
 // TODO Preguntar a John sobre tema de performance para Javascript sobre crear una clase temporalmente
@@ -75,17 +77,10 @@ const postForm = (info) => {
     .then((json) => console.log(json));
 }
 // IMPROVE La manera de saber en donde hay que guardar el dato
-function saveInSession(type) { //Parametro persistent  y que sea un true o false
+function saveInSession(persistInBrowser) {
   const item = "keepRecomendNewsletter"
   const value = false;
-  switch (type) {
-    case "local":
-      localStorage.setItem(item, JSON.stringify(value))
-      break;
-    case "session":
-      sessionStorage.setItem(item, JSON.stringify(value))
-      break;
-  }
+  persistInBrowser ? localStorage.setItem(item, JSON.stringify(value)) : sessionStorage.setItem(item, JSON.stringify(value))
 }
 // IMPROVE El nombre de esta función es más bien lioso con respecto a lo que devuelve
 const hasBeenDisplayNewsletter = () => {
@@ -100,6 +95,7 @@ const displayPopUpNewsletter = () => {
   if (hasBeenDisplayNewsletter()) {
     document.querySelector(".info__newsletter__container").classList.toggle("hidden");
     blockScrollBody();
+    windowESCnewsletter();
   }
 }
 
@@ -109,7 +105,7 @@ const addEventsToNewsletter = () => {
     e.preventDefault();
     e.stopPropagation();
     displayPopUpNewsletter();
-    saveInSession("session");
+    saveInSession(false);
   }
   bgNewsletter.addEventListener("click", (e) => {
     e.stopPropagation()
@@ -131,12 +127,12 @@ const addEventsToNewsletter = () => {
       }
       postForm(dataNewsletter)
       closeNewsletter(e);
-      saveInSession("local");
+      saveInSession(true);
     }
   })
   document.querySelector(".newsletter__btn--exit").addEventListener("click", (e) => {
     closeNewsletter(e);
-    saveInSession("local");
+    saveInSession(true);
   })
   document.querySelector(".info__newsletter__btn__close").addEventListener("click", (e) => {
     closeNewsletter(e);
@@ -155,6 +151,7 @@ function windowESCnewsletter() {
     const popUp = document.querySelector(".info__newsletter__container");
     if (!popUp.classList.contains("hidden") && e.key == "Escape") {
       displayPopUpNewsletter();
+      saveInSession(false);
     }
   })
 }
@@ -167,7 +164,7 @@ selectCurrency.addEventListener("change", () => {
   const currency = selectCurrency.value;
   pricing.changePricesTo(currency);
 })
-function chargeData() {
+function loadData() {
   fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
     .then(response => response.json())
     .then(data => {
@@ -250,7 +247,7 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
 })
 
 window.addEventListener("DOMContentLoaded", () => {
-  chargeData();
+  loadData();
   pricing = new CardPricing(".pricing__container__price__p mark")
   addEventsToNewsletter();
   setTimeout(() => {
