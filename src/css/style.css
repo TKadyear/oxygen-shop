@@ -809,7 +809,6 @@ button {
   .info__newsletter {
     box-shadow: 5px 10px 27px var(--shadow-grey);
     position: fixed;
-    padding: 2rem;
     min-width: 200px;
     max-width: 650px;
     top: 50%;
@@ -818,6 +817,11 @@ button {
     height: max-content;
     border-radius: 18px;
     z-index: 10;
+  }
+
+  .price__list {
+    list-style-position: inside;
+    text-align: center;
   }
 
   .section__info__container {
