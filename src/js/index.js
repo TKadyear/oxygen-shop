@@ -36,7 +36,8 @@ class Price {
   }
   exchangeToString(currencyChange) {
     const changedCurrency = Math.round(this.conversion(currencyChange));
-    return currencyChange === this.currency ? "$" + changedCurrency : changedCurrency + this.whichSymbol(currencyChange)
+    // IMPROVE No es del todo legible
+    return currencyChange === "eur" ? changedCurrency + this.whichSymbol(currencyChange) : this.whichSymbol(currencyChange) + changedCurrency;
   }
 }
 // TODO Preguntar a John sobre tema de performance para Javascript sobre crear una clase temporalmente
