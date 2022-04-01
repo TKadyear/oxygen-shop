@@ -167,7 +167,7 @@ selectCurrency.addEventListener("change", () => {
   const currency = selectCurrency.value;
   pricing.changePricesTo(currency);
 })
-function chargeData() {
+function loadData() {
   fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
     .then(response => response.json())
     .then(data => {
@@ -250,7 +250,7 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
 })
 
 window.addEventListener("DOMContentLoaded", () => {
-  chargeData();
+  loadData();
   pricing = new CardPricing(".pricing__container__price__p mark")
   addEventsToNewsletter();
   setTimeout(() => {
