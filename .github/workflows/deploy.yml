@@ -25,4 +25,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        run: npm run deploy -- -r git@github.com:TKadyear/oxygen-shop.git
+        run: npm run deploy
