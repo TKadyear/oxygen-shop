@@ -806,12 +806,10 @@ button {
     background-color: var(--primary);
   }
 
-  /*
+  /* Esto es para evitar que se quede montado abajo si se ha quedado activado el menu cuando */
   #hamburger:checked~.nav__menu {
-    display: block;
-    background: white;
-    width: 75%;
-  } */
+    width: initial;
+  }
 
   .nav__menu__ul {
     width: 500px;
