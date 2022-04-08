@@ -211,16 +211,6 @@ button {
   color: #2b2b2b;
 }
 
-.nav__menu__a:hover::after {
-  position: absolute;
-  content: "";
-  color: #2b2b2b;
-  height: 3px;
-  width: 100%;
-  left: 0;
-  bottom: -35px;
-  background-color: var(--primary);
-}
 
 .nav__menu {
   display: none;
@@ -805,6 +795,23 @@ button {
   .nav__menu {
     display: block;
   }
+
+  .nav__menu__a:hover::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+    background-color: var(--primary);
+  }
+
+  /*
+  #hamburger:checked~.nav__menu {
+    display: block;
+    background: white;
+    width: 75%;
+  } */
 
   .nav__menu__ul {
     width: 500px;
