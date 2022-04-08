@@ -74,7 +74,10 @@ const postForm = (info) => {
     },
   })
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((json) => {
+      console.log('El envio de datos se ha realizado correctamente')
+      console.table(json)
+    });
 }
 // IMPROVE La manera de saber en donde hay que guardar el dato
 function saveInSession(persistInBrowser) {
@@ -243,6 +246,7 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
     inputName.value = "";
     inputEmail.value = "";
     consentCheckbox.checked = false;
+    window.scrollTo(0, 0)
   }
 })
 
