@@ -1,6 +1,5 @@
 // IMPROVE Se podría mirar como hacer una clase padre para los cambios de conversiones ya que no dependen de los "hijos"
 let conversionRates = {};
-const pricing = new CardPricing(".pricing__container__price__p mark");
 
 const selectCurrency = document.querySelector(".pricing__currency__select");
 selectCurrency.addEventListener("change", () => {
@@ -78,3 +77,5 @@ export class CardPricing {
     })
   }
 }
+
+const pricing = new CardPricing(".pricing__container__price__p mark");
