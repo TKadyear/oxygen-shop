@@ -411,7 +411,8 @@ button {
   margin: 6.5rem auto;
 }
 
-.slide__viewer {
+.slide__viewer,
+#slider {
   position: relative;
   background: white;
   max-width: 750px;
