@@ -14,7 +14,7 @@ export class SliderID {
         base: "slide__btn",
         active: "slide__btn--active"
       }
-    }
+    };
     this.activeIndex = 0;
     this.intervalSlide;
     this.initialization();
@@ -43,13 +43,13 @@ export class SliderID {
   generateBtn() {
     const buttons = this.listImg.map(() => /*html */
       `<button class=${this.style.btn.base}></button>`
-    )
+    );
     const containerBtn = /* html */`
     <div class=${this.style.btn.container}>${buttons.join("")}</div>
-    `
+    `;
     const range = document.createRange();
     const DocumentContainerBtn = range.createContextualFragment(containerBtn);
-    this.listButtons = DocumentContainerBtn.querySelectorAll("." + this.style.btn.base)
+    this.listButtons = DocumentContainerBtn.querySelectorAll("." + this.style.btn.base);
     this.listenerBtn();
     this.containerImages.appendChild(DocumentContainerBtn);
   }
