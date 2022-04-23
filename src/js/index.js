@@ -58,13 +58,6 @@ btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200);
 });
 
-const pricing = new CardPricing(".pricing__container__price__p mark");
-
-const selectCurrency = document.querySelector(".pricing__currency__select");
-selectCurrency.addEventListener("change", () => {
-  const currency = selectCurrency.value;
-  pricing.changePricesTo(currency);
-})
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))

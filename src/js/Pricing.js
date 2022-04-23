@@ -1,5 +1,13 @@
 // IMPROVE Se podría mirar como hacer una clase padre para los cambios de conversiones ya que no dependen de los "hijos"
 let conversionRates = {};
+const pricing = new CardPricing(".pricing__container__price__p mark");
+
+const selectCurrency = document.querySelector(".pricing__currency__select");
+selectCurrency.addEventListener("change", () => {
+  const currency = selectCurrency.value;
+  pricing.changePricesTo(currency);
+})
+
 export function loadData() {
   fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
     .then(response => response.json())
