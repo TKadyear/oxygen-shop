@@ -1,62 +1,8 @@
-let conversionRates = {}
-// IMPROVE quizás con una clase iria mejor.
-let basePrice = [];
-let pricing = {}
-// IMPROVE Se podría mirar como hacer una clase padre para los cambios de conversiones ya que no dependen de los "hijos"
-class Price {
-  constructor(rawData) {
-    this.value = this.whichValue(rawData);
-    this.currency = this.whichCurrency(rawData);
-  }
-  whichValue(rawValue) {
-    return Number(rawValue.replace(/\$/, "").replace(/\€/, "").replace(/\₤/, ""));
-  }
-  whichSymbol(type) {
-    // IMPROVE Hay que mirar una manera de mantenerlo sin repetición
-    const currencyToSymbol = {
-      "eur": "€",
-      "gbp": "₤",
-      "usd": "$"
-    }
-    return currencyToSymbol[type];
-  }
-  whichCurrency(rawValue) {
-    const type = rawValue.replace(/\d/g, "")
-    const symbolCurrency = {
-      "€": "eur",
-      "₤": "gbp",
-      "$": "usd"
-    }
-    return symbolCurrency[type];
-  }
+import { Slider } from "./Slider.js";
+import { CardPricing, loadData } from "./Pricing.js";
 
-  conversion(currencyToChange) {
-    const conversion = currencyToChange === this.currency ? this.value : this.value * conversionRates[currencyToChange]
-    return conversion;
-  }
-  exchangeToString(currencyChange) {
-    const changedCurrency = Math.round(this.conversion(currencyChange));
-    // IMPROVE No es del todo legible
-    // TODO hacer una clase que contenga en donde se debe posicionar el simbolo en base a cada tipo
-    return currencyChange === "eur" ? changedCurrency + this.whichSymbol(currencyChange) : this.whichSymbol(currencyChange) + changedCurrency;
-  }
-}
-// TODO Preguntar a John sobre tema de performance para Javascript sobre crear una clase temporalmente
-class CardPricing {
-  constructor(selector) {
-    this.valuesHTML = document.querySelectorAll(selector);
-    this.initialValue = this.takeInitialValue();
-  }
-  takeInitialValue() {
-    let allPrices = [...this.valuesHTML].map(value => new Price(value.textContent));
-    return allPrices;
-  }
-  changePricesTo(currency) {
-    this.valuesHTML.forEach((priceHTML, index) => {
-      priceHTML.textContent = this.initialValue[index].exchangeToString(currency);
-    })
-  }
-}
+new Slider(".slide__img", ".slide__btn");
+
 const blockScrollBody = () => document.body.classList.toggle("overflow-hidden");
 const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -162,23 +108,12 @@ const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200);
 })
+const pricing = new CardPricing(".pricing__container__price__p mark")
 const selectCurrency = document.querySelector(".pricing__currency__select")
 selectCurrency.addEventListener("change", () => {
   const currency = selectCurrency.value;
   pricing.changePricesTo(currency);
 })
-function loadData() {
-  fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json")
-    .then(response => response.json())
-    .then(data => {
-      const currencyPetition = "usd"
-      const exchangeCurrency = data[currencyPetition];
-      const conversionCurrencies = ["eur", "gbp"];
-      conversionCurrencies.forEach(currency => {
-        conversionRates[currency] = exchangeCurrency[currency];
-      })
-    })
-}
 
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
@@ -188,50 +123,6 @@ window.addEventListener("scroll", () => {
   }
 })
 
-
-class Slider {
-  constructor(identifier, selectorbtn) {
-    this.listImg = document.querySelectorAll(identifier);
-    this.listBtnImg = document.querySelectorAll(selectorbtn);
-    this.count = 0;
-    this.listenerBtn();
-    this.startInterval();
-  }
-
-  changing(itemToChange, classActive) {
-    itemToChange.forEach((img, index) => {
-      if (img.classList.contains(classActive)) {
-        img.classList.remove(classActive);
-      }
-      if (index === this.count) {
-        img.classList.add(classActive);
-      }
-      return img;
-    })
-  }
-  startInterval() {
-    setInterval(() => this.changeSlides(), 3000);
-  }
-  counting() {
-    return this.count = (this.count < (this.listImg.length - 1)) ? ++this.count : 0;
-  }
-  slide() {
-    this.changing(this.listImg, "slide__img--active");
-    this.changing(this.listBtnImg, "slide__btn--active");
-  }
-  changeSlides() {
-    this.counting();
-    this.slide();
-  }
-  listenerBtn() {
-    this.listBtnImg.forEach((btn, index) => btn.addEventListener("click", () => {
-      this.count = index;
-      this.slide();
-    })
-    )
-  }
-}
-const imagesSlider = new Slider(".slide__img", ".slide__btn")
 
 document.querySelector("#submit-btn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -258,7 +149,6 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   loadData();
-  pricing = new CardPricing(".pricing__container__price__p mark")
   addEventsToNewsletter();
   setTimeout(() => {
     if (document.querySelector(".info__newsletter__container").classList.contains("hidden")) {
