@@ -1,8 +1,6 @@
-import { Slider } from "./Slider.js";
+import { SliderID } from "./Slider.js";
 import { loadData } from "./Pricing.js";
 import { addEventsToNewsletter, closeNewsletter, saveInSession, displayPopUpNewsletter } from "./displayNewsletter.js";
-
-new Slider(".slide__img", ".slide__btn");
 
 const isValidEmail = (email) => {
   const RegeXEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -91,6 +89,7 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
   }
 })
 
+new SliderID("#slider")
 window.addEventListener("DOMContentLoaded", () => {
   loadData();
   addEventsToNewsletter();
