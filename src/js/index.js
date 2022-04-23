@@ -91,8 +91,8 @@ document.querySelector("#submit-btn").addEventListener("click", (e) => {
   }
 })
 
+new SliderID("#slider")
 window.addEventListener("DOMContentLoaded", () => {
-  new SliderID("#slider")
   loadData();
   addEventsToNewsletter();
   setTimeout(() => {

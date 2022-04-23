@@ -55,10 +55,13 @@ export class SliderID {
     this.initialization();
   }
   addImageClasses() {
-    this.listImg.forEach(img => img.classList.add(this.imageStyleClass))
+    this.listImg.forEach(img => img.classList.add(this.imageStyleClass));
   }
   listenerBtn(Container) {
-    Container.querySelectorAll(this.btnStyleClass).forEach((btn, position) => {
+    console.log(Container)
+    this.listButtons = Container.querySelectorAll(this.btnStyleClass)
+    console.log(this.listButtons)
+    this.listButtons.forEach((btn, position) => {
       btn.addEventListener("click", () => {
         this.toggleClass();
         this.activeIndex = position;
@@ -67,38 +70,40 @@ export class SliderID {
     })
   }
   generateBtn() {
-    this.listButtons = this.listImg.map(() => /*html */
+    const buttons = this.listImg.map(() => /*html */
       `<button class=${this.btnStyleClass}></button>`
     )
     const containerBtn = /* html */`
-      <div class=${this.btnContainerStyleClass}>${this.listButtons.join("")}</div>
+      <div class=${this.btnContainerStyleClass}>${buttons.join("")}</div>
     `
+    console.log(containerBtn)
     const range = document.createRange();
     const DocumentContainerBtn = range.createContextualFragment(containerBtn);
     this.listenerBtn(DocumentContainerBtn);
-    this.containerImages.insertAdjacentElement('afterend', DocumentContainerBtn)
+    this.containerImages.appendChild(DocumentContainerBtn);
   }
 
   toggleClass() {
-    console.log(this.listButtons[this.activeIndex])
     this.images[this.activeIndex].classList.toggle(this.imageActiveClass);
-    console.log(this.listButtons[this.activeIndex])
-    this.listButtons[this.activeIndex].classList.toggle(this.btnActiveClass);
+    // console.log(this.listButtons[this.activeIndex])
+    // this.listButtons[this.activeIndex].classList.toggle(this.btnActiveClass);
   }
 
   startInterval() {
     // clearInterval(slide);
-    // const slide = setInterval(() => this.slide(), 3000);
+    const slide = setInterval(() => this.slide(), 3000);
   }
   changeActivePhoto() {
     return this.activeIndex = (this.activeIndex < (this.listImg.length - 1)) ? ++this.activeIndex : 0;
   }
   slide() {
     this.toggleClass();
+    this.changeActivePhoto();
+    this.toggleClass();
   }
 
   initialization() {
-    this.generateBtn();
+    // this.generateBtn();
     this.addImageClasses();
     this.toggleClass();
     this.startInterval();

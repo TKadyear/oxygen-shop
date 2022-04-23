@@ -450,6 +450,7 @@ button {
   border-radius: 50%;
   cursor: pointer;
   transition: 200ms;
+  z-index: 1;
 }
 
 .slide__btn:hover,
