@@ -411,7 +411,8 @@ button {
   margin: 6.5rem auto;
 }
 
-.slide__viewer {
+.slide__viewer,
+#slider {
   position: relative;
   background: white;
   max-width: 750px;
@@ -434,8 +435,10 @@ button {
 }
 
 .slide__btn__container {
-  width: max-content;
-  margin: 1rem auto;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -449,6 +452,7 @@ button {
   border-radius: 50%;
   cursor: pointer;
   transition: 200ms;
+  z-index: 1;
 }
 
 .slide__btn:hover,
