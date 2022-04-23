@@ -10,20 +10,19 @@ export class SliderID {
     this.btnStyleClass = "slide__btn";
     this.btnActiveClass = "slide__btn--active";
     this.activeIndex = 0;
+    this.intervalSlide;
     this.initialization();
   }
   addImageClasses() {
     this.listImg.forEach(img => img.classList.add(this.imageStyleClass));
   }
-  listenerBtn(Container) {
-    console.log(Container)
-    this.listButtons = Container.querySelectorAll(this.btnStyleClass)
-    console.log(this.listButtons)
+  listenerBtn() {
     this.listButtons.forEach((btn, position) => {
       btn.addEventListener("click", () => {
-        this.toggleClass();
+        this.removeClass();
         this.activeIndex = position;
-        this.toggleClass();
+        this.addClass();
+        this.startInterval();
       })
     })
   }
@@ -32,38 +31,39 @@ export class SliderID {
       `<button class=${this.btnStyleClass}></button>`
     )
     const containerBtn = /* html */`
-      <div class=${this.btnContainerStyleClass}>${buttons.join("")}</div>
+    <div class=${this.btnContainerStyleClass}>${buttons.join("")}</div>
     `
-    console.log(containerBtn)
     const range = document.createRange();
     const DocumentContainerBtn = range.createContextualFragment(containerBtn);
-    this.listenerBtn(DocumentContainerBtn);
+    this.listButtons = DocumentContainerBtn.querySelectorAll("." + this.btnStyleClass)
+    this.listenerBtn();
     this.containerImages.appendChild(DocumentContainerBtn);
   }
-
-  toggleClass() {
-    this.images[this.activeIndex].classList.toggle(this.imageActiveClass);
-    // console.log(this.listButtons[this.activeIndex])
-    // this.listButtons[this.activeIndex].classList.toggle(this.btnActiveClass);
+  removeClass() {
+    this.images[this.activeIndex].classList.remove(this.imageActiveClass);
+    this.listButtons[this.activeIndex].classList.remove(this.btnActiveClass);
   }
-
+  addClass() {
+    this.images[this.activeIndex].classList.add(this.imageActiveClass);
+    this.listButtons[this.activeIndex].classList.add(this.btnActiveClass);
+  }
   startInterval() {
-    // clearInterval(slide);
-    const slide = setInterval(() => this.slide(), 3000);
+    clearInterval(this.intervalSlide);
+    this.intervalSlide = setInterval(() => this.slide(), 3000);
   }
   changeActivePhoto() {
-    return this.activeIndex = (this.activeIndex < (this.listImg.length - 1)) ? ++this.activeIndex : 0;
+    this.activeIndex = (this.activeIndex < (this.listImg.length - 1)) ? ++this.activeIndex : 0;
   }
   slide() {
-    this.toggleClass();
+    this.removeClass();
     this.changeActivePhoto();
-    this.toggleClass();
+    this.addClass();
   }
 
   initialization() {
-    // this.generateBtn();
+    this.generateBtn();
     this.addImageClasses();
-    this.toggleClass();
+    this.addClass();
     this.startInterval();
   }
 }
