@@ -19,18 +19,26 @@ export class SliderID {
     this.intervalSlide;
     this.initialization();
   }
+  initialization() {
+    this.generateBtn();
+    this.addImageClasses();
+    this.addClass();
+    this.startInterval();
+  }
+  startInterval() {
+    clearInterval(this.intervalSlide);
+    this.intervalSlide = setInterval(() => this.slide(), 3000);
+  }
+  changeActivePhoto() {
+    this.activeIndex = (this.activeIndex < (this.listImg.length - 1)) ? ++this.activeIndex : 0;
+  }
+  slide() {
+    this.removeClass();
+    this.changeActivePhoto();
+    this.addClass();
+  }
   addImageClasses() {
     this.listImg.forEach(img => img.classList.add(this.style.image.base));
-  }
-  listenerBtn() {
-    this.listButtons.forEach((btn, position) => {
-      btn.addEventListener("click", () => {
-        this.removeClass();
-        this.activeIndex = position;
-        this.addClass();
-        this.startInterval();
-      })
-    })
   }
   generateBtn() {
     const buttons = this.listImg.map(() => /*html */
@@ -45,6 +53,16 @@ export class SliderID {
     this.listenerBtn();
     this.containerImages.appendChild(DocumentContainerBtn);
   }
+  listenerBtn() {
+    this.listButtons.forEach((btn, position) => {
+      btn.addEventListener("click", () => {
+        this.removeClass();
+        this.activeIndex = position;
+        this.addClass();
+        this.startInterval();
+      })
+    })
+  }
   removeClass() {
     this.images[this.activeIndex].classList.remove(this.style.image.active);
     this.listButtons[this.activeIndex].classList.remove(this.style.btn.active);
@@ -52,25 +70,6 @@ export class SliderID {
   addClass() {
     this.images[this.activeIndex].classList.add(this.style.image.active);
     this.listButtons[this.activeIndex].classList.add(this.style.btn.active);
-  }
-  startInterval() {
-    clearInterval(this.intervalSlide);
-    this.intervalSlide = setInterval(() => this.slide(), 3000);
-  }
-  changeActivePhoto() {
-    this.activeIndex = (this.activeIndex < (this.listImg.length - 1)) ? ++this.activeIndex : 0;
-  }
-  slide() {
-    this.removeClass();
-    this.changeActivePhoto();
-    this.addClass();
-  }
-
-  initialization() {
-    this.generateBtn();
-    this.addImageClasses();
-    this.addClass();
-    this.startInterval();
   }
 }
 
