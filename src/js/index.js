@@ -1,5 +1,5 @@
 import { Slider } from "./Slider.js";
-import { CardPricing, loadData } from "./Pricing.js";
+import { loadData } from "./Pricing.js";
 import { addEventsToNewsletter, closeNewsletter, saveInSession, displayPopUpNewsletter } from "./displayNewsletter.js";
 
 new Slider(".slide__img", ".slide__btn");
