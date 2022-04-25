@@ -1,3 +1,5 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TKadyear/oxygen-shop/Deploy)
+---
 # Oxygen Shop
 Esto es una solución a un proyecto del Training en Oxygen en los modulos 1 y 2, que consisten en desarrollar con html, css y javascript nativo.
 
