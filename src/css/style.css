@@ -59,6 +59,7 @@ body {
 }
 
 .overflow-hidden {
+  position: relative;
   overflow-y: hidden;
 }
 
@@ -734,6 +735,8 @@ button {
 .form__checkbox,
 .info__newsletter__checkbox {
   cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
   position: relative;
   width: 24px;
