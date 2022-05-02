@@ -1030,7 +1030,8 @@ button {
   .section__contact {
     margin: 3rem auto;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 0;
   }
 
   .contact,
