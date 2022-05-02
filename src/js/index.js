@@ -41,14 +41,19 @@ document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
     saveInSession(true);
   }
 });
-
-// TODO hacer un clearTimeout cuando haces scroll.
+let animation;
+let pastScroll;
 const scrollToHeader = () => {
   const currentScroll = window.scrollY;
+  if (pastScroll != null && pastScroll < currentScroll) {
+    pastScroll = null;
+    return window.cancelAnimationFrame(animation);
+  }
   if (currentScroll > 0) {
     window.scrollTo(0, currentScroll - (currentScroll / 25));
-    window.requestAnimationFrame(scrollToHeader);
+    animation = window.requestAnimationFrame(scrollToHeader);
   }
+  pastScroll = currentScroll;
 };
 
 const btnScroll = document.querySelector(".btn__scroll_up");
