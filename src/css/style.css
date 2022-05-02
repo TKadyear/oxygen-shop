@@ -171,6 +171,7 @@ button {
 }
 
 .percentage-scroller {
+  top: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--primary) 25%, var(--special) 100%);
   position: fixed;
@@ -277,6 +278,7 @@ button {
 
 .header {
   height: 450px;
+  margin-top: 64px;
   margin-bottom: 2rem;
   background: url(../assets/img/bg-header-mobile.png) no-repeat bottom;
   background-size: contain;
