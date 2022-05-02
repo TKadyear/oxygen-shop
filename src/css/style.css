@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;700;800&display=swap');
 
+/*Reset*/
+input,
+label,
+select,
+button,
+textarea {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+
+  /* Browsers have different default form fonts */
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Remove the stupid outer glow in Webkit */
+input:focus {
+  outline: 0;
+}
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
 :root {
   --primary: #08A6E4;
   --secundary: #FB3B64;
@@ -861,6 +897,9 @@ button {
 
   .benefits__container__div {
     display: flex;
+    height: 370px;
+    padding: 55px;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
   }
@@ -875,6 +914,7 @@ button {
 
   .benefits__container__div hr {
     margin: 0;
+    margin-top: 50px;
     align-self: flex-start;
     display: block;
     max-width: 330px;

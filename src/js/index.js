@@ -42,7 +42,7 @@ document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
   }
 });
 
-
+// TODO hacer un clearTimeout cuando haces scroll.
 const scrollToHeader = () => {
   const currentScroll = window.scrollY;
   if (currentScroll > 0) {
