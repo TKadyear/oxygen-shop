@@ -60,8 +60,11 @@ const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200);
 });
-
-
+const menu = document.querySelector("#hamburger");
+const linkNav = document.querySelectorAll(".nav__menu__a");
+linkNav.forEach(link => link.addEventListener("click", () => {
+  menu.checked = false;
+}))
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
