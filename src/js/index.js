@@ -41,22 +41,30 @@ document.querySelector(".newsletter__btn").addEventListener("click", (e) => {
     saveInSession(true);
   }
 });
-
-
+let animation;
+let pastScroll;
 const scrollToHeader = () => {
   const currentScroll = window.scrollY;
+  if (pastScroll != null && pastScroll < currentScroll) {
+    pastScroll = null;
+    return window.cancelAnimationFrame(animation);
+  }
   if (currentScroll > 0) {
     window.scrollTo(0, currentScroll - (currentScroll / 25));
-    window.requestAnimationFrame(scrollToHeader);
+    animation = window.requestAnimationFrame(scrollToHeader);
   }
+  pastScroll = currentScroll;
 };
 
 const btnScroll = document.querySelector(".btn__scroll_up");
 btnScroll.addEventListener("click", () => {
   setTimeout(() => scrollToHeader(), 200);
 });
-
-
+const menu = document.querySelector("#hamburger");
+const linkNav = document.querySelectorAll(".nav__menu__a");
+linkNav.forEach(link => link.addEventListener("click", () => {
+  menu.checked = false;
+}))
 window.addEventListener("scroll", () => {
   const percentageScroll = Math.trunc((window.scrollY * 100) / (document.body.scrollHeight - window.innerHeight))
   document.querySelector(".percentage-scroller").style.width = percentageScroll + "%"
