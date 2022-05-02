@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;700;800&display=swap');
 
 :root {
   --primary: #08A6E4;
@@ -127,7 +127,7 @@ button {
 
 .info__newsletter_p {
   color: var(--grey);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .info__newsletter__label {
@@ -256,7 +256,7 @@ button {
 .header__info__p {
   margin-top: 0;
   margin-bottom: 51px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
 
@@ -543,7 +543,7 @@ button {
 
 .pricing mark {
   background: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 46px;
   font-weight: 300;
 }
@@ -566,7 +566,7 @@ button {
 }
 
 .price__list {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   list-style-image: url(../assets/img/icons/Checkbox.svg);
   margin: 0;
   padding-left: 25px;
@@ -632,7 +632,7 @@ button {
   flex-direction: row;
   align-items: center;
   gap: 0.75rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   color: var(--grey);
