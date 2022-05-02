@@ -153,7 +153,7 @@ button {
   background: var(--white);
   box-shadow: 5px 10px 27px var(--shadow-grey);
   position: fixed;
-  padding: 5rem 2rem;
+  padding: 2rem;
 }
 
 .info__newsletter_h6 {
@@ -373,8 +373,7 @@ button {
 }
 
 .benefits__container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 42px;
   margin: 0 auto;
   max-width: 1124px;
@@ -864,15 +863,12 @@ button {
   }
 
   .info__newsletter {
+    padding: 5rem 2rem;
     box-shadow: 5px 10px 27px var(--shadow-grey);
     position: fixed;
-    min-width: 200px;
-    max-width: 650px;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    min-width: 300px;
+    max-width: 750px;
     height: max-content;
-    border-radius: 18px;
     z-index: 10;
   }
 
@@ -1027,7 +1023,7 @@ button {
 
   .pricing__container {
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   .section__contact {
@@ -1040,6 +1036,13 @@ button {
   .contact,
   .form {
     width: calc(50% - 2.5rem);
+  }
+
+  .info__newsletter {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 18px;
   }
 }
 
