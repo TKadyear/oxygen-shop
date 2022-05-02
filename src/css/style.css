@@ -897,15 +897,13 @@ button {
 
   .benefits__container__div {
     display: flex;
-    height: 370px;
-    padding: 55px;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
   }
 
   .benefits__container__div__content {
-    width: 50%;
+    width: 42.5%;
   }
 
   .benefits__container__div--no-flex {
@@ -945,6 +943,12 @@ button {
     border-radius: 5px;
   }
 
+  .benefits__container__div--separate .benefits__container__div>h3,
+  .benefits__container__div--separate .benefits__container__div>p,
+  .benefits__container__div--separate .benefits__container__div>hr {
+    width: 85%;
+  }
+
   .img--iphone,
   .img--macbook {
     width: 35%;
@@ -953,7 +957,7 @@ button {
   .img--macbook::after {
     width: 120px;
     height: 120px;
-    top: 0;
+    left: 40%;
     border-radius: 18px;
     transform: rotate(-45deg);
   }
@@ -1004,6 +1008,16 @@ button {
     justify-content: space-evenly;
   }
 
+  .benefits__container__div {
+    height: 370px;
+    padding: 55px;
+  }
+
+  .img--macbook::after {
+    top: 0;
+    left: 60%;
+  }
+
   .pricing__container {
     flex-wrap: nowrap;
     justify-content: center;
@@ -1023,6 +1037,6 @@ button {
 
 @media only screen and (min-width: 1280px) {
   .header {
-    /* height: calc(100vh - 85px); */
+    height: 105vh;
   }
 }
