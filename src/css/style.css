@@ -685,9 +685,11 @@ button {
 }
 
 .form>.form__btn {
+  position: relative;
+  margin-left: auto;
+  margin-right: 0;
   width: 60%;
   max-width: 225px;
-  align-self: flex-end;
 }
 
 .form__label,
