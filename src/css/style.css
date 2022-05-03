@@ -1013,10 +1013,8 @@ button {
   }
 
   .pricing__container {
-    width: max-content;
-    display: grid;
-    grid-template-columns: repeat(3, 400px);
-    gap: 50px;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
   }
 
   .section__contact {
