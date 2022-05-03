@@ -1011,8 +1011,10 @@ button {
   }
 
   .pricing__container {
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    gap: 50px;
   }
 
   .section__contact {
