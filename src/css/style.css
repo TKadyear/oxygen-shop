@@ -653,24 +653,15 @@ button {
   margin: 0;
 }
 
-.contact {
-  display: flex;
-  flex-direction: column;
-  gap: 2.25rem;
-}
-
 .contact__info {
-  display: flex;
-  flex-direction: column;
+  margin-top: 2.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
 .contact__info__p {
   margin: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
@@ -678,14 +669,13 @@ button {
 }
 
 .contact__info__p>img {
+  margin-right: 0.75rem;
   max-width: 22px;
-  /* max-height: 42px; */
 }
 
 .form {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2.5rem;
 }
 
@@ -703,8 +693,7 @@ button {
 .form__label,
 .info__newsletter__label {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1.5rem;
   font-size: 11px;
   font-weight: 700;
@@ -758,8 +747,8 @@ button {
 
 .form__label--checkbox,
 .info__newsletter__label--checkbox {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 24px 1fr;
   gap: 10px;
 }
 
