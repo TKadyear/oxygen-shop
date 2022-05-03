@@ -656,7 +656,7 @@ button {
 .contact__info {
   margin-top: 2.25rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
   gap: 1rem;
 }
 
@@ -973,7 +973,7 @@ button {
   .price__list {}
 
   .contact__info {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
   }
 
 }
