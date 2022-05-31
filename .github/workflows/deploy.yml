@@ -1,9 +1,9 @@
-name: Deploy
+name: 🚀Deploy
 
 on:
   push:
     branches:
-      - main
+      - try-deploy-without-ssh
 
 jobs:
   deploy-to-gh-pages:
@@ -11,11 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Use SSH Key
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
-          sudo chmod 600 ~/.ssh/id_rsa
       - name: Git User Config
         run: |
           git config --global user.email "tamarakadyear@gmail.com"
